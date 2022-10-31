@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
+
+body {
+  width: 100vw;
+  height: 100vh;
+  font-weight: bolder;
+  margin: 0px;
+  padding: 0px;
+  color: white;
+}
+
+/* .lib {
+  gap: 60px;
+  display: flex;
+  flex-direction: row;
+}
+
+button {
+  background: transparent;
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+  width: 100px;
+}
+
+.link {
+    
+} */
