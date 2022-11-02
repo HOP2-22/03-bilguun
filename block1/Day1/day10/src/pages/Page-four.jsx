@@ -6,12 +6,18 @@ const styles = {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    width: "100vw",
+    // width: "100vw",
     height: "100vh",
   },
   cart: {
+    height: "400px",
+    width: "1250px",
+    paddingLeft: "10px",
     display: "flex",
-    flexDirection: "row",
+    alignItems: "center",
+    overflowX: "scroll",
+    scrollSnapType: "x mandatory",
+    transition: "1",
   },
 };
 
@@ -27,6 +33,9 @@ export const PageFour = () => {
         What people say about us
       </p>
       <div style={styles.cart}>
+        <Cart />
+        <Cart />
+        <Cart />
         <Cart />
         <Cart />
         <Cart />

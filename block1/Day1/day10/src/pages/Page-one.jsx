@@ -20,13 +20,24 @@ export const PageOne = () => {
         display: "flex",
         flexDirection: "row",
         height: "100vh",
-        width: "100vw",
+        // width: "100vw",
       }}
     >
       <div style={styles.text}>
-        <p style={{ fontSize: "48px", margin: "0" }}>Your Hub for</p>
-        <p style={{ fontSize: "48px", margin: "0" }}>teamwork</p>
-        <div style={{ fontSize: "18px" }}>
+        <p style={{ fontSize: "48px", margin: "0", fontWeight: "800" }}>
+          Your Hub for
+        </p>
+        <p
+          style={{
+            fontSize: "48px",
+            margin: "0",
+            fontWeight: "800",
+            marginBottom: "20px",
+          }}
+        >
+          teamwork
+        </p>
+        <div style={{ fontSize: "18px", color: "#182D40" }}>
           <p>
             Give everyone you work with—inside and outside your company—a more
           </p>

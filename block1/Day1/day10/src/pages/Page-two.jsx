@@ -26,16 +26,27 @@ export const PageTwo = () => {
         display: "flex",
         flexDirection: "row",
         height: "100vh",
-        width: "100vw",
+        // width: "100vw",
       }}
     >
       <div style={styles.image}>
         <img src={image} alt="brook" />
       </div>
       <div style={styles.text}>
-        <p style={{ fontSize: "48px", margin: "0" }}>Simple Task</p>
-        <p style={{ fontSize: "48px", margin: "0" }}>management</p>
-        <div style={{ fontSize: "18px" }}>
+        <p style={{ fontSize: "48px", margin: "0", fontWeight: "800" }}>
+          Simple Task
+        </p>
+        <p
+          style={{
+            fontSize: "48px",
+            margin: "0",
+            fontWeight: "800",
+            marginBottom: "20px",
+          }}
+        >
+          management
+        </p>
+        <div style={{ fontSize: "18px", color: "#182D40" }}>
           <p>
             Give everyone you work with—inside and outside your company—a more
           </p>

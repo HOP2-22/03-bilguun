@@ -10,6 +10,7 @@ const styles = {
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
+    color: "white",
   },
   options: {
     display: "flex",
@@ -23,6 +24,16 @@ const styles = {
     flexDirection: "row",
     justifyContent: "center",
     marginBottom: "20px",
+  },
+  input: {
+    width: "300px",
+    height: "60px",
+    border: "2px solid #4DA0FD",
+    padding: "5px",
+    fontSize: "18px",
+  },
+  p: {
+    color: "white",
   },
 };
 
@@ -57,44 +68,44 @@ export const Footer = () => {
         </div>
       </div>
       <div style={styles.options}>
-        <p>Use Cases</p>
-        <p>UX Design</p>
-        <p>UX Design</p>
-        <p>UX Design</p>
-        <p>UX Design</p>
-        <p>UX Design</p>
-        <p>UX Design</p>
+        <p style={styles.p}>Use Cases</p>
+        <p style={styles.p}>UX Design</p>
+        <p style={styles.p}>UX Design</p>
+        <p style={styles.p}>UX Design</p>
+        <p style={styles.p}>UX Design</p>
+        <p style={styles.p}>UX Design</p>
+        <p style={styles.p}>UX Design</p>
       </div>
       <div style={styles.options}>
-        <p>Explore</p>
-        <p>Explore</p>
-        <p>Explore</p>
-        <p>Explore</p>
-        <p>Explore</p>
-        <p>Explore</p>
-        <p>Explore</p>
+        <p style={styles.p}>Explore</p>
+        <p style={styles.p}>Explore</p>
+        <p style={styles.p}>Explore</p>
+        <p style={styles.p}>Explore</p>
+        <p style={styles.p}>Explore</p>
+        <p style={styles.p}>Explore</p>
+        <p style={styles.p}>Explore</p>
       </div>
       <div style={styles.options}>
-        <p>Use Cases</p>
-        <p>UX Design</p>
-        <p>UX Design</p>
-        <p>UX Design</p>
-        <p>UX Design</p>
-        <p>UX Design</p>
-        <p>UX Design</p>
+        <p style={styles.p}>Use Cases</p>
+        <p style={styles.p}>UX Design</p>
+        <p style={styles.p}>UX Design</p>
+        <p style={styles.p}>UX Design</p>
+        <p style={styles.p}>UX Design</p>
+        <p style={styles.p}>UX Design</p>
+        <p style={styles.p}>UX Design</p>
       </div>
       <div style={styles.options}>
-        <p>Use Cases</p>
-        <p>UX Design</p>
-        <p>UX Design</p>
-        <p>UX Design</p>
-        <p>UX Design</p>
-        <p>UX Design</p>
-        <p>UX Design</p>
+        <p style={styles.p}>Use Cases</p>
+        <p style={styles.p}>UX Design</p>
+        <p style={styles.p}>UX Design</p>
+        <p style={styles.p}>UX Design</p>
+        <p style={styles.p}>UX Design</p>
+        <p style={styles.p}>UX Design</p>
+        <p style={styles.p}>UX Design</p>
       </div>
       <div style={styles.options}>
         <h1>subscribe for our newsletter</h1>
-        <input type="text" placeholder="email..." />
+        <input type="text" placeholder="Email..." style={styles.input} />
       </div>
     </div>
   );

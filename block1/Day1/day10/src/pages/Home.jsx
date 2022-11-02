@@ -77,10 +77,12 @@ export const Home = () => {
           </div>
         </div>
       </div>
-      <PageOne />
-      <PageTwo />
-      <PageThree />
-      <PageFour />
+      <div style={{ maxWidth: "2500px" }}>
+        <PageOne />
+        <PageTwo />
+        <PageThree />
+        <PageFour />
+      </div>
     </div>
   );
 };

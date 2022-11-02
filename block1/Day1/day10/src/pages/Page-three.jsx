@@ -17,6 +17,12 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
   },
+  h1: {
+    fontSize: "48px",
+    margin: "0",
+    fontWeight: "800",
+    marginBottom: "10px",
+  },
 };
 
 export const PageThree = () => {
@@ -26,13 +32,13 @@ export const PageThree = () => {
         display: "flex",
         flexDirection: "row",
         height: "100vh",
-        width: "100vw",
+        // width: "100vw",
       }}
     >
       <div style={styles.text}>
-        <p style={{ fontSize: "48px", margin: "0" }}>Scheduling that</p>
-        <p style={{ fontSize: "48px", margin: "0" }}>actually works</p>
-        <div style={{ fontSize: "18px" }}>
+        <p style={styles.h1}>Scheduling that</p>
+        <p style={styles.h1}>actually works</p>
+        <div style={{ fontSize: "18px", color: "#182D40" }}>
           <p>
             Give everyone you work with—inside and outside your company—a more
           </p>
