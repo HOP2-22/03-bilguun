@@ -6,16 +6,18 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
+// import MediaCard from "./Card";
+// import Grid from "@mui/material/Grid";
 export const Header = () => {
   return (
     <Box>
-      <AppBar
-        position="static"
-        sx={{
-          backgroundColor: "white",
-        }}
-      >
-        <Container maxWidth="xl">
+      <Container>
+        <AppBar
+          position="static"
+          sx={{
+            backgroundColor: "white",
+          }}
+        >
           <Toolbar
             variant="dense"
             sx={{
@@ -25,7 +27,7 @@ export const Header = () => {
             <IconButton
               edge="start"
               aria-label="menu"
-              sx={{ mr: 2, color: "black" }}
+              sx={{ mr: 2, color: "black", fontWeight: "bold" }}
             >
               team.
             </IconButton>
@@ -84,8 +86,8 @@ export const Header = () => {
               </Button>
             </Box>
           </Toolbar>
-        </Container>
-      </AppBar>
+        </AppBar>
+      </Container>
     </Box>
   );
 };
