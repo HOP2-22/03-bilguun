@@ -1,7 +1,7 @@
 import React from "react";
-import Twitter from "..//assets/svg/Twitter.svg";
-import Facebook from "..//assets/svg/Facebook .svg";
-import Instagram from "..//assets/svg/Instagram .svg";
+import Twitter from "../assets/svg/Twitter.svg";
+import Facebook from "../assets/svg/Facebook .svg";
+import Instagram from "../assets/svg/Instagram .svg";
 const styles = {
   footer: {
     width: "100vw",

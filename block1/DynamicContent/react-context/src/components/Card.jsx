@@ -1,4 +1,4 @@
-import * as React from "../../../day10/node_modules/@types/react";
+import * as React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -6,9 +6,8 @@ import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 // import Image from "../svg/Rectangle.svg";
-import data from "../data.json";
 
-export default function MediaCard({ usedData }) {
+export const MediaCard = ({ usedData }) => {
   return (
     <Card
       sx={{
@@ -49,4 +48,4 @@ export default function MediaCard({ usedData }) {
       </CardContent>
     </Card>
   );
-}
+};

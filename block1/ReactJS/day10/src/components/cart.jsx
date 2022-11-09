@@ -1,6 +1,6 @@
 import "../styles/cart.css";
-import Star from "..//assets/svg/star.svg";
-import profile from "..//assets/images/image.jpeg";
+import Star from "../assets/svg/star.svg";
+import profile from "../assets/images/image.jpeg";
 
 export const Cart = () => {
   return (

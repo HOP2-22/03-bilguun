@@ -1,4 +1,4 @@
-import React from "../../../day10/node_modules/@types/react";
+import React from "react";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -17,10 +17,10 @@ export const Footer = () => (
     <Container>
       <Grid
         container
-        spacing={5}
+        spacing={2}
         sx={{ display: "flex", alignItems: "center" }}
       >
-        <Grid item xm={12} sm={3}>
+        <Grid item xm={12} sm={2.3}>
           <Box>
             <Typography
               sx={{ fontWeight: "800", fontSize: "30px", marginBottom: "5px" }}
@@ -72,7 +72,7 @@ export const Footer = () => (
             </Typography>
           </Box>
         </Grid>
-        <Grid item xm={12} sm={3}>
+        <Grid item xm={12} sm={2.3}>
           <Box>
             <Typography
               sx={{ fontSize: "14px", marginBottom: "5px", fontWeight: "400" }}
@@ -124,7 +124,7 @@ export const Footer = () => (
             </Typography>
           </Box>
         </Grid>
-        <Grid item xm={12} sm={3}>
+        <Grid item xm={12} sm={2.3}>
           <Box>
             <Typography
               sx={{ fontSize: "14px", marginBottom: "5px", fontWeight: "400" }}
@@ -176,7 +176,7 @@ export const Footer = () => (
             </Typography>
           </Box>
         </Grid>
-        <Grid item xm={12} sm={3}>
+        <Grid item xm={12} sm={2.5}>
           <Box>
             <Typography
               sx={{ fontSize: "14px", marginBottom: "5px", fontWeight: "400" }}
@@ -228,7 +228,7 @@ export const Footer = () => (
             </Typography>
           </Box>
         </Grid>
-        <Grid xm={12} sm={3}>
+        <Grid xm={12} sm={2.3}>
           <Typography sm={{ fontSize: "18px", fontWeight: "600" }}>
             Subscribe to our newsletter
           </Typography>

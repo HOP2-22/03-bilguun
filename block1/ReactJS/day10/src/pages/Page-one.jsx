@@ -47,7 +47,7 @@ export const PageOne = () => {
             communication
           </p>
           <p>into one place.</p>
-          <a href="#">Learn more..</a>
+          <a href="/">Learn more..</a>
         </div>
       </div>
       <img src={image} alt="meeting" />
