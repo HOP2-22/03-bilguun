@@ -8,7 +8,7 @@ export const Footer = () => (
     sx={{
       backgroundColor: "#252B3B",
       color: "white",
-      marginTop: "100px",
+      paddingTop: "50px",
       fontFamily: "Mulish",
       height: "340px",
       // width: "100vw",

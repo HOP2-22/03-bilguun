@@ -3,7 +3,7 @@ import React, { createContext, useState } from "react";
 export const ColorModeContext = createContext();
 
 export function ThemeContext({ children }) {
-  const [theme, setTheme] = useState("white");
+  const [theme, setTheme] = useState("dark");
 
   const colorModeHander = () => {
     setTheme((prev) => (prev === "dark" ? "white" : "dark"));

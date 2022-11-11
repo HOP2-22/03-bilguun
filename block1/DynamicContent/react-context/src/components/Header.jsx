@@ -65,9 +65,11 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 export const Header = () => {
   const { theme, changeTheme } = useContext(ColorModeContext);
-  console.log(theme);
   return (
-    <Box theme={theme}>
+    <Box
+      theme={theme}
+      sx={{ backgroundColor: theme === "white" ? "black" : "white" }}
+    >
       <Container>
         <AppBar position="static">
           <Toolbar
@@ -79,7 +81,11 @@ export const Header = () => {
             <IconButton
               edge="start"
               aria-label="menu"
-              sx={{ mr: 2, color: "black", fontWeight: "bold" }}
+              sx={{
+                mr: 2,
+                fontWeight: "bold",
+                color: theme === "white" ? "white" : "black",
+              }}
             >
               team.
             </IconButton>
