@@ -9,6 +9,7 @@ import { Button } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import FormGroup from "@mui/material/FormGroup";
 import Switch from "@mui/material/Switch";
+import { useNavigate } from "react-router-dom";
 import FormControlLabel, {
   formControlLabelClasses,
 } from "@mui/material/FormControlLabel";
@@ -65,13 +66,19 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 export const Header = () => {
   const { theme, changeTheme } = useContext(ColorModeContext);
+  let navigate = useNavigate();
   return (
     <Box
       theme={theme}
-      sx={{ backgroundColor: theme === "white" ? "black" : "white" }}
+      sx={{
+        backgroundColor: theme === "white" ? "black" : "white",
+        position: "fixed",
+        top: "0",
+        zIndex: "1",
+      }}
     >
       <Container>
-        <AppBar position="static">
+        <AppBar sx={{ boxShadow: "none" }}>
           <Toolbar
             variant="dense"
             sx={{
@@ -81,6 +88,7 @@ export const Header = () => {
             <IconButton
               edge="start"
               aria-label="menu"
+              onClick={() => navigate(`/`)}
               sx={{
                 mr: 2,
                 fontWeight: "bold",
@@ -123,8 +131,9 @@ export const Header = () => {
                 color="grey"
                 component="div"
                 sx={{ textDecoration: "underline" }}
+                onClick={() => navigate(`/blog`)}
               >
-                Services
+                Blog
               </Typography>
               <Typography
                 variant="body1"

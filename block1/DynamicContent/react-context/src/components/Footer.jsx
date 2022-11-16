@@ -11,14 +11,17 @@ export const Footer = () => (
       paddingTop: "50px",
       fontFamily: "Mulish",
       height: "340px",
-      // width: "100vw",
+      width: "100vw",
     }}
   >
     <Container>
       <Grid
         container
         spacing={2}
-        sx={{ display: "flex", alignItems: "center" }}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+        }}
       >
         <Grid item xm={12} sm={2.3}>
           <Box>
