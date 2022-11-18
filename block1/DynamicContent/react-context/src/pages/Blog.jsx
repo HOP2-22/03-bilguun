@@ -34,7 +34,12 @@ function Blog() {
     fetchPosts();
   }, []);
   return (
-    <Box sx={{ backgroundColor: theme === "white" ? "black" : "white" }}>
+    <Box
+      sx={{
+        backgroundColor: theme === "white" ? "black" : "white",
+        marginTop: "50px",
+      }}
+    >
       <Container>
         <div
           sx={{

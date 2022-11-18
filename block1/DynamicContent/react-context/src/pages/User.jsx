@@ -3,34 +3,76 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Box, Container } from "@mui/system";
 import { Typography } from "@mui/material";
-import HighlightOffSharpIcon from "@mui/icons-material/HighlightOffSharp";
 import { useContext } from "react";
 import { ColorModeContext } from "../context/ThemeContext";
+import Button from "@mui/material/Button";
 
 export const Comment = ({ commentText, list, setList, index }) => {
   const handleClick = (e) => {
     setList(list.filter((_, ind) => ind !== index));
   };
+  let { id } = useParams();
+  const [post, setPost] = useState([]);
   let { theme } = useContext(ColorModeContext);
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const instance = axios.create({
+          baseURL: `https://dummyapi.io/data/v1/post/${id}`,
+          headers: { "app-id": "636e0d6642c1f665f684f489" },
+        });
+        const res = await instance.get("/");
+        setPost(res.data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchPosts();
+  }, [id]);
   return (
     <Box
       sx={{
-        borderBottom: "1px solid grey",
-        width: "80%",
-        height: "5vh",
+        border: "1px solid grey",
+        width: "100%",
+        height: "10vh",
         margintop: "100px",
         display: "flex",
-        justifyContent: "space-around",
+        justifyContent: "space-between",
+        alignItems: "center",
         padding: "10px",
+        backgroundColor: theme === "dark" ? "white" : "black",
       }}
     >
-      <Typography sx={{ color: theme === "white" ? "white" : "black" }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          gap: "10px",
+        }}
+      >
+        <img
+          src={post?.owner?.picture}
+          alt="cc"
+          width={30}
+          height={30}
+          style={{ borderRadius: "50%" }}
+        />
+        <Typography sx={{ color: theme === "dark" ? "black" : "white" }}>
+          {post?.owner?.firstName}
+          {post?.owner?.lastName}
+        </Typography>
+      </Box>
+      <Typography
+        sx={{
+          color: theme === "white" ? "white" : "black",
+        }}
+      >
         {commentText}
       </Typography>
-      <HighlightOffSharpIcon
-        sx={{ color: theme === "white" ? "white" : "black" }}
-        onClick={handleClick}
-      />
+      <Button color="error" variant="outlined" onClick={handleClick}>
+        Delete
+      </Button>
     </Box>
   );
 };
@@ -59,7 +101,6 @@ export const User = () => {
     };
     fetchPosts();
   }, [id]);
-  console.log(post);
   return (
     <Box
       sx={{
@@ -141,7 +182,7 @@ export const User = () => {
             }}
           ></Box>
         </Box>
-        <Container maxWidth="md" sx={{ marginTop: "100px" }}>
+        <Container maxWidth="xl" sx={{ marginTop: "100px" }}>
           <Typography
             variant="body1"
             component="div"
@@ -154,7 +195,11 @@ export const User = () => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
             nemo, fuga ab nisi minima facere, officiis explicabo veritatis
             accusantium doloremque voluptatum dolor perferendis! Eligendi
-            laborum doloremque libero voluptate porro deleniti?
+            laborum doloremque libero voluptate porro deleniti?Lorem ipsum dolor
+            sit amet consectetur adipisicing elit. Veniam nemo, fuga ab nisi
+            minima facere, officiis explicabo veritatis accusantium doloremque
+            voluptatum dolor perferendis! Eligendi laborum doloremque libero
+            voluptate porro deleniti?
           </Typography>
           <Typography
             variant="body1"
@@ -167,7 +212,11 @@ export const User = () => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
             nemo, fuga ab nisi minima facere, officiis explicabo veritatis
             accusantium doloremque voluptatum dolor perferendis! Eligendi
-            laborum doloremque libero voluptate porro deleniti?
+            laborum doloremque libero voluptate porro deleniti? Lorem ipsum
+            dolor sit amet consectetur adipisicing elit. Veniam nemo, fuga ab
+            nisi minima facere, officiis explicabo veritatis accusantium
+            doloremque voluptatum dolor perferendis! Eligendi laborum doloremque
+            libero voluptate porro deleniti?
           </Typography>
           <Typography
             variant="body1"
@@ -180,7 +229,11 @@ export const User = () => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
             nemo, fuga ab nisi minima facere, officiis explicabo veritatis
             accusantium doloremque voluptatum dolor perferendis! Eligendi
-            laborum doloremque libero voluptate porro deleniti?
+            laborum doloremque libero voluptate porro deleniti? Lorem ipsum
+            dolor sit amet consectetur adipisicing elit. Veniam nemo, fuga ab
+            nisi minima facere, officiis explicabo veritatis accusantium
+            doloremque voluptatum dolor perferendis! Eligendi laborum doloremque
+            libero voluptate porro deleniti?
           </Typography>
           <Typography
             variant="body1"
@@ -193,7 +246,11 @@ export const User = () => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
             nemo, fuga ab nisi minima facere, officiis explicabo veritatis
             accusantium doloremque voluptatum dolor perferendis! Eligendi
-            laborum doloremque libero voluptate porro deleniti?
+            laborum doloremque libero voluptate porro deleniti? Lorem ipsum
+            dolor sit amet consectetur adipisicing elit. Veniam nemo, fuga ab
+            nisi minima facere, officiis explicabo veritatis accusantium
+            doloremque voluptatum dolor perferendis! Eligendi laborum doloremque
+            libero voluptate porro deleniti?
           </Typography>
           <Typography
             variant="body1"
@@ -206,7 +263,11 @@ export const User = () => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
             nemo, fuga ab nisi minima facere, officiis explicabo veritatis
             accusantium doloremque voluptatum dolor perferendis! Eligendi
-            laborum doloremque libero voluptate porro deleniti?
+            laborum doloremque libero voluptate porro deleniti? Lorem ipsum
+            dolor sit amet consectetur adipisicing elit. Veniam nemo, fuga ab
+            nisi minima facere, officiis explicabo veritatis accusantium
+            doloremque voluptatum dolor perferendis! Eligendi laborum doloremque
+            libero voluptate porro deleniti?
           </Typography>
         </Container>
         <Box
@@ -218,7 +279,13 @@ export const User = () => {
             marginTop: "100px",
           }}
         >
-          <img src={post?.owner?.picture} alt="pro" width={50} height={50} />
+          <img
+            src={post?.owner?.picture}
+            alt="pro"
+            width={50}
+            height={50}
+            style={{ borderRadius: "50%" }}
+          />
           <Box
             sx={{
               display: "flex",
@@ -240,7 +307,7 @@ export const User = () => {
         </Box>
         <Box
           sx={{
-            borderTop: "1px solid grey",
+            borderTop: "1px solid #6D7D8B",
             display: "flex",
             flexDirection: "column",
             width: "100%",
@@ -271,14 +338,27 @@ export const User = () => {
             sx={{
               dipslay: "flex",
               flexDirection: "row",
-              alignItems: "flex-start",
+              justifyContent: "center",
+              height: "10vh",
             }}
           >
-            <img src={post?.owner?.picture} alt="pr" width={40} height={40} />
+            <img
+              src={post?.owner?.picture}
+              alt="pr"
+              width={40}
+              height={40}
+              style={{ borderRadius: "50%" }}
+            />
             <input
               type="text"
               placeholder="Comment..."
-              style={{ width: "40vw", height: "15vh" }}
+              style={{
+                width: "96%",
+                height: "7vh",
+                backgroundColor: "transparent",
+                color: theme === "dark" ? "black" : "white",
+                border: "none",
+              }}
               value={inputValue}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
