@@ -15,9 +15,9 @@ export const Gifs = ({ useGifs }) => {
         flexDirection: "column",
       }}
     >
-      <p>{useGifs.title}</p>
+      <p>{useGifs?.title}</p>
       <img
-        src={useGifs.images.fixed_height.url}
+        src={useGifs?.images?.fixed_height.url}
         alt="gif"
         width={300}
         height={300}
