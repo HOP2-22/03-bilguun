@@ -27,12 +27,12 @@ export const Rat = ({ active, Whack }) => {
         <img
           src={rat}
           alt="rat"
-          width={96}
+          width={64}
           height={128}
           style={{
             position: "absolute",
             bottom: active ? "100px" : "20px",
-            left: 16,
+            left: 32,
             // animation: "hole-up 1s linear 2s infinite alternate",
             transition: "200ms",
           }}
