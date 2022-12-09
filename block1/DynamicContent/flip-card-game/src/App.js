@@ -1,22 +1,26 @@
 import React, { useState, useEffect } from "react";
+import { difference } from "lodash";
 import "./App.css";
 import { Card } from "./components/card.jsx";
+
+const myArray = [1, 2, 3];
+const myArray2 = [1, 2, 4];
 
 function App() {
   const characterImages = [
     "bakugou.png",
-    // "fire.jpeg",
-    // "frog.png",
-    // "midoriya.png",
-    // "3-gen.png",
-    // "3-hero.png",
-    // "10-hero.jpeg",
-    // "all-might.jpeg",
-    // "vacation.jpeg",
-    // "fight.png",
+    "fire.jpeg",
+    "frog.png",
+    "midoriya.png",
+    "3-gen.png",
+    "3-hero.png",
+    "10-hero.jpeg",
+    "all-might.jpeg",
+    "vacation.jpeg",
+    "fight.png",
   ];
   const [cards, setCards] = useState([]);
-  const [flipped, setFlipped] = useState(new Array(2).fill(true));
+  const [flipped, setFlipped] = useState(new Array(20).fill(false));
   const [firstFlip, setFirstFlip] = useState(null);
   const flip = (index) => {
     setFlipped(flipped.map((flip, ind) => (index === ind ? !flip : flip)));
@@ -37,7 +41,7 @@ function App() {
       }
       setTimeout(() => {
         setFirstFlip(null);
-        setFlipped(new Array(2).fill(true));
+        setFlipped(new Array(20).fill(false));
       }, 600);
     }
   };
