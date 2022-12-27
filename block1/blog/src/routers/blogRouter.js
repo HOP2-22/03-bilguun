@@ -8,10 +8,10 @@ const {
 } = require("../controllers/userController");
 const blogRouter = express.Router();
 
-blogRouter.get("/user/", getUsers);
-blogRouter.get("/user/:id", getUsersById);
-blogRouter.post("/user/create", createUser);
-blogRouter.delete("/user/delete/:id", deleteUser);
-blogRouter.put("/user/update/:id", updateUser);
+blogRouter.get("/", getUsers);
+blogRouter.get("/:id", getUsersById);
+blogRouter.post("/create", createUser);
+blogRouter.delete("/delete/:id", deleteUser);
+blogRouter.put("/update/:id", updateUser);
 
 module.exports = blogRouter;

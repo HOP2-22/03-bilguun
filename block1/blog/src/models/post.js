@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-// const Users = require("./user");
+const Users = require("./user");
 
 const Schema = mongoose.Schema;
 
@@ -9,7 +9,7 @@ const PostSchema = new Schema({
   link: { type: String },
   tags: { type: Array },
   publishDate: { type: Date, default: new Date() },
-  // owner: Users,
+  owner: { type: String },
 });
 
 const Posts = mongoose.model("posts", PostSchema);

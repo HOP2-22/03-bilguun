@@ -5,19 +5,26 @@ exports.getList = async (request, response) => {
   response.send(posts);
 };
 
-exports.getListByUser = async (request, response) => {};
+exports.getListByUser = async (request, response) => {
+  const owner = request.params.id;
+  try {
+    const post = await Posts.find();
+    const sendpost = post.filter((el) => {
+      return el.owner === owner;
+    });
+    response.send(sendpost);
+  } catch (error) {
+    response.status(400).send(error.message);
+  }
+};
 
 exports.getListByTag = async (request, response) => {
   const tag = request.params.id;
   try {
-    const posts = await Posts.find();
-    posts.map((post) => {
-      for (let i = 0; i < post.tags.length; i++) {
-        if (tag == post.tags[i]) {
-          return response.send(post);
-        }
-      }
+    const posts = await Posts.find({
+      tags: tag,
     });
+    response.send(posts);
   } catch (error) {}
 };
 //finished

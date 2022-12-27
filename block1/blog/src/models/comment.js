@@ -3,9 +3,8 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const commentSchema = new Schema({
-  id: { type: String },
   message: { type: String },
-  // owner: {}
+  owner: { type: String },
   post: { type: String },
   publishDate: { type: Date, default: new Date() },
 });
