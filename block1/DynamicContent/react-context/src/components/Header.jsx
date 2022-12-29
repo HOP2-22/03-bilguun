@@ -77,7 +77,7 @@ export const Header = () => {
         zIndex: "1",
       }}
     >
-      <Container>
+      <Container maxWidth="xl">
         <AppBar sx={{ boxShadow: "none" }}>
           <Toolbar
             variant="dense"

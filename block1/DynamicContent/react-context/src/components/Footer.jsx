@@ -23,216 +23,413 @@ export const Footer = () => (
           alignItems: "center",
         }}
       >
-        <Grid item xm={12} sm={2.3}>
+        <Grid item xm={12} sm={2.5}>
           <Box>
             <Typography
-              sx={{ fontWeight: "800", fontSize: "30px", marginBottom: "5px" }}
+              sx={{
+                fontWeight: "800",
+                fontSize: "30px",
+                marginBottom: "5px",
+                color: "white",
+                marginBottom: "10px",
+              }}
             >
               team.
             </Typography>
           </Box>
           <Box>
             <Typography
-              sx={{ fontSize: "14px", marginBottom: "5px", fontWeight: "400" }}
+              sx={{
+                fontSize: "16px",
+                marginBottom: "5px",
+                fontWeight: "400",
+                color: "white",
+                marginBottom: "10px",
+                fontFamily: "Mulish, sans-serif",
+              }}
             >
               Instagram
             </Typography>
           </Box>
           <Box>
             <Typography
-              sx={{ fontSize: "14px", marginBottom: "5px", fontWeight: "400" }}
+              sx={{
+                fontSize: "16px",
+                marginBottom: "5px",
+                fontWeight: "400",
+                color: "white",
+                marginBottom: "10px",
+                fontFamily: "Mulish, sans-serif",
+              }}
             >
-              Instagram
+              Facebook
             </Typography>
           </Box>
 
           <Box>
             <Typography
-              sx={{ fontSize: "14px", marginBottom: "5px", fontWeight: "400" }}
+              sx={{
+                fontSize: "16px",
+                marginBottom: "5px",
+                fontWeight: "400",
+                color: "white",
+                marginBottom: "10px",
+                fontFamily: "Mulish, sans-serif",
+              }}
+            >
+              Twitter
+            </Typography>
+          </Box>
+          <Box>
+            <Typography
+              sx={{
+                fontSize: "16px",
+                marginBottom: "5px",
+                fontWeight: "400",
+                color: "white",
+                marginBottom: "10px",
+                fontFamily: "Mulish, sans-serif",
+              }}
             >
               Instagram
             </Typography>
           </Box>
           <Box>
             <Typography
-              sx={{ fontSize: "14px", marginBottom: "5px", fontWeight: "400" }}
+              sx={{
+                fontSize: "16px",
+                marginBottom: "5px",
+                fontWeight: "400",
+                color: "white",
+                marginBottom: "10px",
+                fontFamily: "Mulish, sans-serif",
+              }}
             >
-              Instagram
+              Facebook
             </Typography>
           </Box>
           <Box>
             <Typography
-              sx={{ fontSize: "14px", marginBottom: "5px", fontWeight: "400" }}
+              sx={{
+                fontSize: "16px",
+                marginBottom: "5px",
+                fontWeight: "400",
+                color: "white",
+                marginBottom: "10px",
+                fontFamily: "Mulish, sans-serif",
+              }}
             >
-              Instagram
-            </Typography>
-          </Box>
-          <Box>
-            <Typography
-              sx={{ fontSize: "14px", marginBottom: "5px", fontWeight: "400" }}
-            >
-              Instagram
+              Twitter
             </Typography>
           </Box>
         </Grid>
         <Grid item xm={12} sm={2.3}>
           <Box>
             <Typography
-              sx={{ fontSize: "14px", marginBottom: "5px", fontWeight: "400" }}
+              sx={{
+                fontSize: "16px",
+                marginBottom: "5px",
+                fontWeight: "400",
+                color: "white",
+                marginBottom: "10px",
+                fontFamily: "Mulish, sans-serif",
+              }}
             >
               Use cases
             </Typography>
           </Box>
           <Box>
             <Typography
-              sx={{ fontSize: "14px", marginBottom: "5px", fontWeight: "400" }}
+              sx={{
+                fontSize: "16px",
+                marginBottom: "5px",
+                fontWeight: "400",
+                color: "white",
+                marginBottom: "10px",
+                fontFamily: "Mulish, sans-serif",
+              }}
             >
-              team.
+              UI design
             </Typography>
           </Box>
           <Box>
             <Typography
-              sx={{ fontSize: "14px", marginBottom: "5px", fontWeight: "400" }}
+              sx={{
+                fontSize: "16px",
+                marginBottom: "5px",
+                fontWeight: "400",
+                color: "white",
+                marginBottom: "10px",
+                fontFamily: "Mulish, sans-serif",
+              }}
             >
-              team.
+              UX design
             </Typography>
           </Box>
 
           <Box>
             <Typography
-              sx={{ fontSize: "14px", marginBottom: "5px", fontWeight: "400" }}
+              sx={{
+                fontSize: "16px",
+                marginBottom: "5px",
+                fontWeight: "400",
+                color: "white",
+                marginBottom: "10px",
+                fontFamily: "Mulish, sans-serif",
+              }}
             >
-              team.
+              Prototyping
             </Typography>
           </Box>
           <Box>
             <Typography
-              sx={{ fontSize: "14px", marginBottom: "5px", fontWeight: "400" }}
+              sx={{
+                fontSize: "16px",
+                marginBottom: "5px",
+                fontWeight: "400",
+                color: "white",
+                marginBottom: "10px",
+                fontFamily: "Mulish, sans-serif",
+              }}
             >
-              team.
+              UI design
             </Typography>
           </Box>
           <Box>
             <Typography
-              sx={{ fontSize: "14px", marginBottom: "5px", fontWeight: "400" }}
+              sx={{
+                fontSize: "16px",
+                marginBottom: "5px",
+                fontWeight: "400",
+                color: "white",
+                marginBottom: "10px",
+                fontFamily: "Mulish, sans-serif",
+              }}
             >
-              team.
+              UX design
             </Typography>
           </Box>
           <Box>
             <Typography
-              sx={{ fontSize: "14px", marginBottom: "5px", fontWeight: "400" }}
+              sx={{
+                fontSize: "16px",
+                marginBottom: "5px",
+                fontWeight: "400",
+                color: "white",
+                marginBottom: "10px",
+                fontFamily: "Mulish, sans-serif",
+              }}
             >
-              team.
+              Prototyping
             </Typography>
           </Box>
         </Grid>
         <Grid item xm={12} sm={2.3}>
           <Box>
             <Typography
-              sx={{ fontSize: "14px", marginBottom: "5px", fontWeight: "400" }}
+              sx={{
+                fontSize: "16px",
+                marginBottom: "5px",
+                fontWeight: "400",
+                color: "white",
+                marginBottom: "10px",
+                fontFamily: "Mulish, sans-serif",
+              }}
             >
-              team.
+              Explore
             </Typography>
           </Box>
           <Box>
             <Typography
-              sx={{ fontSize: "14px", marginBottom: "5px", fontWeight: "400" }}
+              sx={{
+                fontSize: "16px",
+                marginBottom: "5px",
+                fontWeight: "400",
+                color: "white",
+                marginBottom: "10px",
+                fontFamily: "Mulish, sans-serif",
+              }}
             >
-              team.
+              Figma.
             </Typography>
           </Box>
           <Box>
             <Typography
-              sx={{ fontSize: "14px", marginBottom: "5px", fontWeight: "400" }}
+              sx={{
+                fontSize: "16px",
+                marginBottom: "5px",
+                fontWeight: "400",
+                color: "white",
+                marginBottom: "10px",
+                fontFamily: "Mulish, sans-serif",
+              }}
             >
-              team.
+              Customers.
             </Typography>
           </Box>
 
           <Box>
             <Typography
-              sx={{ fontSize: "14px", marginBottom: "5px", fontWeight: "400" }}
+              sx={{
+                fontSize: "16px",
+                marginBottom: "5px",
+                fontWeight: "400",
+                color: "white",
+                marginBottom: "10px",
+                fontFamily: "Mulish, sans-serif",
+              }}
             >
-              team.
+              Why I Love Figma.
             </Typography>
           </Box>
           <Box>
             <Typography
-              sx={{ fontSize: "14px", marginBottom: "5px", fontWeight: "400" }}
+              sx={{
+                fontSize: "16px",
+                marginBottom: "5px",
+                fontWeight: "400",
+                color: "white",
+                marginBottom: "10px",
+                fontFamily: "Mulish, sans-serif",
+              }}
             >
-              team.
+              Figma.
             </Typography>
           </Box>
           <Box>
             <Typography
-              sx={{ fontSize: "14px", marginBottom: "5px", fontWeight: "400" }}
+              sx={{
+                fontSize: "16px",
+                marginBottom: "5px",
+                fontWeight: "400",
+                color: "white",
+                marginBottom: "10px",
+                fontFamily: "Mulish, sans-serif",
+              }}
             >
-              team.
+              Customers.
             </Typography>
           </Box>
           <Box>
             <Typography
-              sx={{ fontSize: "14px", marginBottom: "5px", fontWeight: "400" }}
+              sx={{
+                fontSize: "16px",
+                marginBottom: "5px",
+                fontWeight: "400",
+                color: "white",
+                marginBottom: "10px",
+                fontFamily: "Mulish, sans-serif",
+              }}
             >
-              team.
+              Why I Love Figma.
             </Typography>
           </Box>
         </Grid>
         <Grid item xm={12} sm={2.5}>
           <Box>
             <Typography
-              sx={{ fontSize: "14px", marginBottom: "5px", fontWeight: "400" }}
+              sx={{
+                fontSize: "16px",
+                marginBottom: "5px",
+                fontWeight: "400",
+                color: "white",
+                marginBottom: "10px",
+                fontFamily: "Mulish, sans-serif",
+              }}
             >
-              team.
+              Resources
             </Typography>
           </Box>
           <Box>
             <Typography
-              sx={{ fontSize: "14px", marginBottom: "5px", fontWeight: "400" }}
+              sx={{
+                fontSize: "16px",
+                marginBottom: "5px",
+                fontWeight: "400",
+                color: "white",
+                marginBottom: "10px",
+                fontFamily: "Mulish, sans-serif",
+              }}
             >
-              team.
+              Community Resources Hub.
             </Typography>
           </Box>
           <Box>
             <Typography
-              sx={{ fontSize: "14px", marginBottom: "5px", fontWeight: "400" }}
+              sx={{
+                fontSize: "16px",
+                marginBottom: "5px",
+                fontWeight: "400",
+                color: "white",
+                marginBottom: "10px",
+                fontFamily: "Mulish, sans-serif",
+              }}
             >
-              team.
+              Support.
             </Typography>
           </Box>
 
           <Box>
             <Typography
-              sx={{ fontSize: "14px", marginBottom: "5px", fontWeight: "400" }}
+              sx={{
+                fontSize: "16px",
+                marginBottom: "5px",
+                fontWeight: "400",
+                color: "white",
+                marginBottom: "10px",
+                fontFamily: "Mulish, sans-serif",
+              }}
             >
-              team.
+              Education.
             </Typography>
           </Box>
           <Box>
             <Typography
-              sx={{ fontSize: "14px", marginBottom: "5px", fontWeight: "400" }}
+              sx={{
+                fontSize: "16px",
+                marginBottom: "5px",
+                fontWeight: "400",
+                color: "white",
+                marginBottom: "10px",
+                fontFamily: "Mulish, sans-serif",
+              }}
             >
-              team.
+              Community Resources Hub.
             </Typography>
           </Box>
           <Box>
             <Typography
-              sx={{ fontSize: "14px", marginBottom: "5px", fontWeight: "400" }}
+              sx={{
+                fontSize: "16px",
+                marginBottom: "5px",
+                fontWeight: "400",
+                color: "white",
+                marginBottom: "10px",
+                fontFamily: "Mulish, sans-serif",
+              }}
             >
-              team.
+              Support.
             </Typography>
           </Box>
           <Box>
             <Typography
-              sx={{ fontSize: "14px", marginBottom: "5px", fontWeight: "400" }}
+              sx={{
+                fontSize: "16px",
+                marginBottom: "5px",
+                fontWeight: "400",
+                color: "white",
+                marginBottom: "10px",
+                fontFamily: "Mulish, sans-serif",
+              }}
             >
-              team.
+              Education.
             </Typography>
           </Box>
         </Grid>
         <Grid xm={12} sm={2.3}>
-          <Typography sm={{ fontSize: "18px", fontWeight: "600" }}>
+          <Typography
+            sm={{ fontSize: "18px", fontWeight: "600", color: "white" }}
+          >
             Subscribe to our newsletter
           </Typography>
         </Grid>
