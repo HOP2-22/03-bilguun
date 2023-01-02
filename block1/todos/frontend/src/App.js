@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import List from "./components/list";
+import Button from "@mui/material/Button";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
@@ -14,6 +16,7 @@ function App() {
       console.log(res);
       const temp = [...dataa, res.data];
       setInputValue("");
+      setDesc("");
       setData(temp);
     } catch (error) {
       console.log(error);
@@ -24,19 +27,24 @@ function App() {
       try {
         const { data } = await axios.get("http://localhost:8029/todo");
         setData(data);
-        // console.log(data);
       } catch (error) {
         console.log(error);
       }
     };
     fetchData();
-  }, [dataa]);
+  }, []);
 
+  const updateHandler = async (id) => {
+    try {
+      const res = await axios.put(`http://localhost:8029/todo/${id}`);
+    } catch (error) {}
+  };
   const deleteHandler = async (id) => {
     try {
       const res = await axios.delete(`http://localhost:8029/todo/${id}`);
       console.log(res);
-      const newRes = dataa.filter((i) => i.id == id);
+      const newRes = dataa.filter((i) => i._id !== id);
+      console.log(newRes);
       setData(newRes);
     } catch (error) {
       console.error(error);
@@ -57,15 +65,22 @@ function App() {
         <p style={{ color: "black", fontStyle: "italic", fontSize: "45px" }}>
           Todo list
         </p>
-        <div style={{ display: "flex", gap: "30px" }}>
+        <div
+          style={{ display: "flex", gap: "30px" }}
+          onSubmit={(event) => {
+            event.preventDefault();
+          }}
+        >
           <input
             type="text"
+            value={inputValue}
             onChange={(e) => {
               setInputValue(e.target.value);
             }}
           />
           <input
             type="text"
+            value={desc}
             onChange={(e) => {
               setDesc(e.target.value);
             }}
@@ -82,47 +97,12 @@ function App() {
         <div>
           {dataa?.map((data1, index) => {
             return (
-              <div
-                style={{
-                  width: "100vw",
-                  display: "flex",
-                  justifyContent: "center",
-                  gap: "100px",
-                }}
+              <List
                 key={index}
-              >
-                <div
-                  style={{
-                    width: "200px",
-                    height: "30px",
-                    border: "1px solid black",
-                    display: "flex",
-                    justifyContent: "flex-start",
-                    alignItems: "center",
-                    borderRadius: "50px",
-                    paddingLeft: "20px",
-                  }}
-                >
-                  {data1?.title}
-                  <button>edit</button>
-                </div>
-                <div
-                  style={{
-                    width: "200px",
-                    height: "30px",
-                    border: "1px solid black",
-                    display: "flex",
-                    justifyContent: "flex-start",
-                    alignItems: "center",
-                    borderRadius: "50px",
-                    paddingLeft: "20px",
-                  }}
-                >
-                  {data1?.description}
-                  <button>edit</button>
-                </div>
-                <button onClick={() => deleteHandler(data1._id)}>delete</button>
-              </div>
+                data={data1}
+                updateHandler={updateHandler}
+                deleteHandler={deleteHandler}
+              />
             );
           })}
           <p></p>

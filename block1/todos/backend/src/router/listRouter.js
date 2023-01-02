@@ -10,5 +10,5 @@ const listRouter = express.Router();
 listRouter.get("/", getLists);
 listRouter.post("/create", createList);
 listRouter.delete("/:id", deleteList);
-listRouter.put("/list", updateList);
+listRouter.put("/update/:id", updateList);
 module.exports = listRouter;
