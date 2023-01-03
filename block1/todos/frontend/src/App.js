@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import List from "./components/list";
-import Button from "@mui/material/Button";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
@@ -34,11 +33,6 @@ function App() {
     fetchData();
   }, []);
 
-  const updateHandler = async (id) => {
-    try {
-      const res = await axios.put(`http://localhost:8029/todo/${id}`);
-    } catch (error) {}
-  };
   const deleteHandler = async (id) => {
     try {
       const res = await axios.delete(`http://localhost:8029/todo/${id}`);
@@ -97,12 +91,7 @@ function App() {
         <div>
           {dataa?.map((data1, index) => {
             return (
-              <List
-                key={index}
-                data={data1}
-                updateHandler={updateHandler}
-                deleteHandler={deleteHandler}
-              />
+              <List key={index} data={data1} deleteHandler={deleteHandler} />
             );
           })}
           <p></p>

@@ -1,10 +1,56 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-export const List = ({ index, deleteHandler, updateHandler, data }) => {
-  const [edit, setEdit] = useState(false);
-  const list = () => {
-    console.log(data);
+export const List = ({ index, deleteHandler, data }) => {
+  const [editing, setEditing] = useState(false);
+  const [newTitle, setNewTitle] = useState(data.title);
+  const [newDesc, setNewDesc] = useState(data.description);
+
+  const updateHandler = async (id) => {
+    await axios.put(`http://localhost:8029/todo/update/${id}`, {
+      title: newTitle,
+      description: newDesc,
+    });
+    console.log("updated");
+    setEditing(false);
   };
+  if (editing) {
+    return (
+      <div
+        style={{
+          width: "100vw",
+          display: "flex",
+          justifyContent: "center",
+          gap: "100px",
+        }}
+      >
+        <input
+          type="text"
+          value={newTitle}
+          onChange={(e) => {
+            setNewTitle(e.target.value);
+          }}
+        />
+        <input
+          type="text"
+          value={newDesc}
+          onChange={(e) => {
+            setNewDesc(e.target.value);
+          }}
+        />
+        <button
+          onClick={() => {
+            setEditing(false);
+            updateHandler(data._id);
+            console.log(data._id);
+          }}
+        >
+          save
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div
       style={{
@@ -27,11 +73,10 @@ export const List = ({ index, deleteHandler, updateHandler, data }) => {
           paddingLeft: "20px",
         }}
       >
-        {data?.title}
+        {newTitle}
         <button
           onClick={() => {
-            updateHandler(data._id);
-            setEdit(true);
+            setEditing(true);
           }}
         >
           edit
@@ -49,12 +94,11 @@ export const List = ({ index, deleteHandler, updateHandler, data }) => {
           paddingLeft: "20px",
         }}
       >
-        {data?.description}
+        {}
 
         <button
           onClick={() => {
-            updateHandler(data._id);
-            setEdit(true);
+            setEditing(true);
           }}
         >
           edit
