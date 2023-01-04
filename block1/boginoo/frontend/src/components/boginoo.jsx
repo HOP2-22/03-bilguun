@@ -1,11 +1,42 @@
 import Button from "@mui/material/Button";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import Group from "../assets/Group.svg";
+import { useNavigate } from "react-router-dom";
 
 export const Boginoo = () => {
+  const [value, setValue] = useState("");
+  const [data, setData] = useState([]);
+  const navigate = useNavigate();
+  const createData = async () => {
+    let random = (Math.random() + 1).toString(36).substring(7);
+    console.log(random);
+    try {
+      const res = await axios.post("http://localhost:8029/short/create", {
+        original: value,
+        short: random,
+      });
+      console.log(res);
+      setValue("");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data } = await axios.get("http://localhost:8029/short");
+        setData(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
   return (
     <Container>
       <Box
@@ -16,7 +47,7 @@ export const Boginoo = () => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          gap: "100px",
+          gap: "50px",
         }}
       >
         <Box
@@ -49,11 +80,19 @@ export const Boginoo = () => {
             id="outlined-basic"
             label="https://www.web-huudas.mn"
             variant="outlined"
+            value={value}
+            onChange={(e) => {
+              setValue(e.target.value);
+            }}
             sx={{ width: "30%", padding: "0" }}
           />
           <Button
             variant="outlined"
             height={44}
+            onClick={() => {
+              createData();
+              navigate(`/shortened`);
+            }}
             sx={{
               backgroundColor: "#02B589",
               color: "white",
