@@ -2,16 +2,19 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const listRouter = require("./router/listRouter");
+const userRouter = require("./router/userRouter");
 const app = express();
-const port = 8029;
+require("dotenv").config();
+
+const port = process.env.PORT;
 
 app.use(cors());
 app.use(express.json());
 app.use("/short", listRouter);
+app.use("/user", userRouter);
 
-mongoose.connect(
-  "mongodb+srv://Bilguun0829:billi0829@cluster0.ecy1n6f.mongodb.net/boginoo?retryWrites=true&w=majority"
-);
+mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true });
+mongoose.set("strictQuery", true);
 
 const connection = mongoose.connection;
 connection.once("open", () => {

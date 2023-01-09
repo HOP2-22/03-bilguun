@@ -3,8 +3,10 @@ import { Typography } from "@mui/material";
 import { Button } from "@mui/material";
 import { Box } from "@mui/system";
 import { Container } from "@mui/system";
+import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
+  const navigate = useNavigate();
   return (
     <Container>
       <Box
@@ -31,6 +33,9 @@ export const Header = () => {
             width: "183px",
             height: "44px",
             borderRadius: "100px",
+          }}
+          onClick={() => {
+            navigate(`login`);
           }}
         >
           Нэвтрэх
