@@ -1,6 +1,7 @@
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import { OutlinedInput } from "@mui/material";
 import { Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import { useState, useEffect } from "react";
@@ -77,15 +78,21 @@ export const Shortened = () => {
             gap: "40px",
           }}
         >
-          <TextField
-            id="outlined-basic"
-            label="https://www.web-huudas.mn"
+          <OutlinedInput
+            placeholder="name@mail.domain"
             variant="outlined"
             value={value}
             onChange={(e) => {
               setValue(e.target.value);
             }}
-            sx={{ width: "30%", padding: "0" }}
+            sx={{
+              width: "381",
+              padding: "0",
+              height: "44px",
+              borderRadius: "100px",
+              fontFamily: "Ubuntu",
+              fontSize: "20px",
+            }}
           />
           <Button
             variant="outlined"
@@ -95,6 +102,7 @@ export const Shortened = () => {
               color: "white",
               height: "55px",
               borderRadius: "100px",
+              fontFamily: "Ubuntu",
             }}
             onClick={() => createData()}
           >
@@ -109,15 +117,75 @@ export const Shortened = () => {
                 style={{
                   display: "flex",
                   flexDirection: "row",
+                  justifyContent: "space-between",
                   gap: "50px",
                   width: "50vw",
+                  height: "80px",
+                  borderBottom: "1px solid grey",
                 }}
               >
-                <p>Өгөгдсөн холбоос: {e.original}</p>
-                <p>
-                  Богино холбоос:{" "}
-                  <a href={`${e.short}`}>http://localhost/3000/{e.short}</a>
-                </p>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      fontFamily: "Ubuntu",
+                      fontStyle: "normal",
+                      fontWeight: "400",
+                      fontSize: "16px",
+                      lineHeight: "18px",
+                      color: "grey",
+                    }}
+                  >
+                    Өгөгдсөн холбоос:
+                  </Typography>
+                  <Typography
+                    sx={{
+                      color: "black",
+                      textDecoration: "none",
+                      fontFamily: "Ubuntu",
+                      fontStyle: "normal",
+                      fontWeight: "400",
+                      fontSize: "20px",
+                      lineHeight: "23px",
+                    }}
+                  >
+                    {e.original}
+                  </Typography>
+                </Box>
+                <Box>
+                  <Typography
+                    sx={{
+                      fontFamily: "Ubuntu",
+                      fontStyle: "normal",
+                      fontWeight: "400",
+                      fontSize: "16px",
+                      lineHeight: "18px",
+                      color: "grey",
+                    }}
+                  >
+                    Богино холбоос:
+                  </Typography>
+                  <Typography>
+                    <a
+                      href={`${e.short}`}
+                      style={{
+                        color: "black",
+                        textDecoration: "none",
+                        fontFamily: "Ubuntu",
+                        fontStyle: "normal",
+                        fontWeight: "400",
+                        fontSize: "20px",
+                        lineHeight: "23px",
+                      }}
+                    >
+                      http://localhost:3000/{e.short}
+                    </a>
+                  </Typography>
+                </Box>
               </div>
             );
           })}

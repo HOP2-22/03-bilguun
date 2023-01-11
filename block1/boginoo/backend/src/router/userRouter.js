@@ -5,9 +5,21 @@ const {
   Login,
 } = require("../controller/userController");
 
-const userRouter = express.Router();
+const { authenticate } = require("../middleware/authorization");
 
-userRouter.get("/", getUsers);
+const userRouter = express.Router();
+const middleware = (req, res, next) => {
+  const ticket = req.body.ticket;
+  if (ticket) {
+    next();
+  } else {
+    res.status(400).json({
+      message: "Invalid ticket",
+    });
+  }
+};
+
+userRouter.get("/", authenticate, getUsers);
 userRouter.post("/create", createUsers);
 userRouter.post("/login", Login);
 
