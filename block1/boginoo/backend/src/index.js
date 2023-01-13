@@ -5,7 +5,6 @@ const listRouter = require("./router/listRouter");
 const userRouter = require("./router/userRouter");
 const app = express();
 require("dotenv").config();
-
 const port = process.env.PORT;
 
 app.use(cors());

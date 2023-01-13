@@ -7,21 +7,24 @@ import { Box } from "@mui/system";
 import Header from "./layout/header";
 import Footer from "./layout/footer";
 import { Url } from "./components/url";
+import { NameContext } from "./context/Context";
 
 function App() {
   return (
     <BrowserRouter>
-      <Box>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Boginoo />} />
-          <Route path="/shortened" element={<Shortened />} />
-          <Route path="/:id" element={<Url />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-        </Routes>
-        <Footer />
-      </Box>
+      <NameContext>
+        <Box>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Boginoo />} />
+            <Route path="/shortened" element={<Shortened />} />
+            <Route path="/:id" element={<Url />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
+          </Routes>
+          <Footer />
+        </Box>
+      </NameContext>
     </BrowserRouter>
   );
 }

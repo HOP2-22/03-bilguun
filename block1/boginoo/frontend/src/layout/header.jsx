@@ -1,11 +1,13 @@
-import * as React from "react";
+import React, { useContext } from "react";
 import { Typography } from "@mui/material";
 import { Button } from "@mui/material";
 import { Box } from "@mui/system";
 import { Container } from "@mui/system";
 import { useNavigate } from "react-router-dom";
+import { User } from "../context/Context";
 
 export const Header = () => {
+  const { email, disable } = useContext(User);
   const navigate = useNavigate();
   return (
     <Container>
@@ -25,21 +27,25 @@ export const Header = () => {
         >
           Хэрхэн ажилладаг вэ?
         </Typography>
-        <Button
-          variant="outlined"
-          sx={{
-            backgroundColor: "#02B589",
-            color: "white",
-            width: "183px",
-            height: "44px",
-            borderRadius: "100px",
-          }}
-          onClick={() => {
-            navigate(`login`);
-          }}
-        >
-          Нэвтрэх
-        </Button>
+        {email ? (
+          <p>{email}</p>
+        ) : (
+          <Button
+            variant="outlined"
+            sx={{
+              backgroundColor: "#02B589",
+              color: "white",
+              width: "183px",
+              height: "44px",
+              borderRadius: "100px",
+            }}
+            onClick={() => {
+              navigate(`login`);
+            }}
+          >
+            Нэвтрэх
+          </Button>
+        )}
       </Box>
     </Container>
   );

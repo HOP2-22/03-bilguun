@@ -1,35 +1,16 @@
 import Button from "@mui/material/Button";
-import { useState, useEffect } from "react";
+import { useContext } from "react";
 import axios from "axios";
 import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
 import { OutlinedInput } from "@mui/material";
 import { Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import Group from "../assets/Group.svg";
 import { useNavigate } from "react-router-dom";
+import { User } from "../context/Context";
 
 export const Login = () => {
-  const navigate = useNavigate();
-  const [userInfo, setUserInfo] = useState({
-    email: "",
-    password: "",
-  });
-  const Login = async () => {
-    try {
-      const res = await axios.post("http://localhost:8029/user/login", {
-        email: userInfo.email,
-        password: userInfo.password,
-      });
-      if (res.data.message !== false) {
-        navigate(`/`);
-      }
-      console.log(res);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
+  const { user, setUser, LoginFunc } = useContext(User);
   return (
     <Container>
       <Box
@@ -80,9 +61,9 @@ export const Login = () => {
             <OutlinedInput
               placeholder="name@mail.domain"
               variant="outlined"
-              value={userInfo.email}
+              value={user.email}
               onChange={(e) => {
-                setUserInfo({ ...userInfo, email: e.target.value });
+                setUser({ ...user, email: e.target.value });
               }}
               sx={{
                 width: "381px",
@@ -105,9 +86,9 @@ export const Login = () => {
             <OutlinedInput
               placeholder="••••••••••"
               variant="outlined"
-              value={userInfo.password}
+              value={user.password}
               onChange={(e) => {
-                setUserInfo({ ...userInfo, password: e.target.value });
+                setUser({ ...user, password: e.target.value });
               }}
               sx={{
                 width: "381px",
@@ -136,7 +117,7 @@ export const Login = () => {
             <Button
               variant="outlined"
               onClick={() => {
-                Login();
+                LoginFunc();
               }}
               sx={{
                 borderRadius: "100px",

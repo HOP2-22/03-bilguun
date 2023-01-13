@@ -1,22 +1,27 @@
 import React, { createContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export const User = createContext();
 
 export function NameContext({ children }) {
-  const [email, setEmail] = useState(null);
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
   const [disable, setDisable] = useState(false);
-  const [userInfo, setUserInfo] = useState({
+  const [user, setUser] = useState({
     email: "",
     password: "",
   });
 
-  const Login = async () => {
+  const LoginFunc = async () => {
     try {
       const res = await axios.post("http://localhost:8029/user/login", {
-        email: userInfo.email,
-        password: userInfo.password,
+        email: user.email,
+        password: user.password,
       });
       if (res.data.message !== false) {
+        setDisable(true);
+        setEmail(res.data.user.email);
         navigate(`/`);
       }
       console.log(res);
@@ -26,7 +31,15 @@ export function NameContext({ children }) {
   };
 
   return (
-    <User.Provider value={{ email: email, disable: disable, Login: Login }}>
+    <User.Provider
+      value={{
+        email: email,
+        disable: disable,
+        user: user,
+        LoginFunc: LoginFunc,
+        setUser: setUser,
+      }}
+    >
       {children}
     </User.Provider>
   );
