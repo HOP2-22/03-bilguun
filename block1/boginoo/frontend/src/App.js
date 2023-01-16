@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Boginoo } from "./components/boginoo";
-import { Shortened } from "./components/shortened";
+import { History } from "./components/History";
 import { Login } from "./components/login";
 import { SignUp } from "./components/signup";
 import { Box } from "@mui/system";
@@ -17,7 +17,7 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Boginoo />} />
-            <Route path="/shortened" element={<Shortened />} />
+            <Route path="/history" element={<History />} />
             <Route path="/:id" element={<Url />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />

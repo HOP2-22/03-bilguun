@@ -21,7 +21,7 @@ export function NameContext({ children }) {
       });
       if (res.data.message !== false) {
         setDisable(true);
-        setEmail(res.data.user.email);
+        setEmail(res.data.email);
         navigate(`/`);
       }
       console.log(res);
@@ -36,6 +36,7 @@ export function NameContext({ children }) {
         email: email,
         disable: disable,
         user: user,
+        setEmail: setEmail,
         LoginFunc: LoginFunc,
         setUser: setUser,
       }}

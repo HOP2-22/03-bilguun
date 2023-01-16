@@ -27,3 +27,16 @@ exports.getLink = async (req, res) => {
     res.status(400).send(error.message);
   }
 };
+
+exports.getUserLink = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const listData = await Lists.find({ user: id });
+    res.status(200).json({
+      message: "success",
+      data: listData,
+    });
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+};

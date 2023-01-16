@@ -38,7 +38,7 @@ exports.Login = async (req, res) => {
         },
         ACCESS_TOKEN_KEY
       );
-      res.send({ user: user, match: match, token: token });
+      res.send({ email: user.email, match: match, token: token });
     } else {
       res.send({ message: match });
     }

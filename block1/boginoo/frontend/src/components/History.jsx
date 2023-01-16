@@ -1,58 +1,24 @@
-import Button from "@mui/material/Button";
-import { useState, useEffect, useContext } from "react";
-import axios from "axios";
+import { useContext, useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
 import { Container } from "@mui/system";
-import { User } from "../context/Context";
 import Group from "../assets/Group.svg";
-import { OutlinedInput } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { User } from "../context/Context";
+import axios from "axios";
 
-export const Boginoo = () => {
-  const [value, setValue] = useState("");
-  const [data, setData] = useState([]);
-  const [short, setShort] = useState(false);
-  let link = data.slice(-1);
+export const History = () => {
   const { email } = useContext(User);
-  const navigate = useNavigate();
-  const createData = async () => {
-    let random = (Math.random() + 1).toString(36).substring(7);
-    console.log(random);
-    if (email === "") {
-      try {
-        const res = await axios.post("http://localhost:8029/short/create", {
-          original: value,
-          short: random,
-        });
-        console.log(res);
-        setValue("");
-        setShort(true);
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      try {
-        const res = await axios.post("http://localhost:8029/short/create", {
-          original: value,
-          short: random,
-          user: email,
-        });
-        console.log(res);
-        setValue("");
-        setShort(true);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  };
+  const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get("http://localhost:8029/short");
-        setData(data);
+        const { data } = await axios.get(
+          `http://localhost:8029/short/user/${email}`
+        );
+        console.log(data);
+        setData(data.data);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     };
     fetchData();
@@ -86,60 +52,17 @@ export const Boginoo = () => {
             Boginoo
           </Typography>
         </Box>
-        <Box
-          sx={{
-            width: "100%",
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: "40px",
-          }}
-        >
-          <OutlinedInput
-            placeholder="name@mail.domain"
-            variant="outlined"
-            value={value}
-            onChange={(e) => {
-              setValue(e.target.value);
-            }}
-            sx={{
-              width: "381px",
-              padding: "0",
-              height: "44px",
-              borderRadius: "100px",
-              fontFamily: "Ubuntu",
-              fontSize: "20px",
-            }}
-          />
-          <Button
-            variant="outlined"
-            height={44}
-            onClick={() => {
-              createData();
-            }}
-            sx={{
-              backgroundColor: "#02B589",
-              color: "white",
-              height: "55px",
-              borderRadius: "100px",
-            }}
-          >
-            Богиносгох
-          </Button>
-        </Box>
-        {short ? (
-          <Box>
+        {data?.map((e, index) => {
+          return (
             <div
               style={{
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
-                gap: "50px",
                 width: "50vw",
                 height: "80px",
-                borderBottom: "1px solid grey",
               }}
+              key={index}
             >
               <Box
                 sx={{
@@ -172,7 +95,7 @@ export const Boginoo = () => {
                     lineHeight: "23px",
                   }}
                 >
-                  {link[0]?.original}
+                  {e?.original}
                 </Typography>
               </Box>
               <Box>
@@ -190,7 +113,7 @@ export const Boginoo = () => {
                 </Typography>
                 <Typography>
                   <a
-                    href={`${link[0]?.short}`}
+                    href={`${e?.short}`}
                     style={{
                       color: "black",
                       textDecoration: "none",
@@ -201,16 +124,16 @@ export const Boginoo = () => {
                       lineHeight: "23px",
                     }}
                   >
-                    http://localhost:3000/{`${link[0]?.short}`}
+                    http://localhost:3000/{`${e?.short}`}
                   </a>
                 </Typography>
               </Box>
             </div>
-          </Box>
-        ) : null}
+          );
+        })}
       </Box>
     </Container>
   );
 };
 
-export default Boginoo;
+export default History;

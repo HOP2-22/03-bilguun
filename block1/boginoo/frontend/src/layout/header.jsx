@@ -5,10 +5,23 @@ import { Box } from "@mui/system";
 import { Container } from "@mui/system";
 import { useNavigate } from "react-router-dom";
 import { User } from "../context/Context";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 
 export const Header = () => {
-  const { email, disable } = useContext(User);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClickPro = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const { email, setEmail } = useContext(User);
   const navigate = useNavigate();
+  const handleClick = () => {
+    <></>;
+  };
   return (
     <Container>
       <Box
@@ -28,7 +41,58 @@ export const Header = () => {
           Хэрхэн ажилладаг вэ?
         </Typography>
         {email ? (
-          <p>{email}</p>
+          <div
+            onClick={() => {
+              handleClick();
+            }}
+          >
+            <div>
+              <Button
+                id="demo-positioned-button"
+                aria-controls={open ? "demo-positioned-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? "true" : undefined}
+                onClick={handleClickPro}
+                sx={{ color: "black" }}
+              >
+                {email}
+              </Button>
+              <Menu
+                id="demo-positioned-menu"
+                aria-labelledby="demo-positioned-button"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "left",
+                }}
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "left",
+                }}
+              >
+                <MenuItem
+                  onClick={() => {
+                    handleClose();
+                    setEmail("");
+                  }}
+                  sx={{ width: "150px" }}
+                >
+                  Log Out
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    handleClose();
+                    navigate(`/history`);
+                  }}
+                  sx={{ width: "150px" }}
+                >
+                  History
+                </MenuItem>
+              </Menu>
+            </div>
+          </div>
         ) : (
           <Button
             variant="outlined"
