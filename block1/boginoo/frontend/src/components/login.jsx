@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { User } from "../context/Context";
 
 export const Login = () => {
+  const navigate = useNavigate();
   const { user, setUser, LoginFunc } = useContext(User);
   return (
     <Container>
@@ -33,12 +34,25 @@ export const Login = () => {
             alignItems: "center",
           }}
         >
-          <img src={Group} alt="group" />
-          <Typography
-            sx={{ fontFamily: "Lobster", fontSize: "56px", color: "#02B589" }}
+          <Box
+            sx={{
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+            onClick={() => {
+              navigate(`/`);
+            }}
           >
-            Boginoo
-          </Typography>
+            <img src={Group} alt="group" />
+            <Typography
+              sx={{ fontFamily: "Lobster", fontSize: "56px", color: "#02B589" }}
+            >
+              Boginoo
+            </Typography>
+          </Box>
           <Box
             sx={{
               display: "flex",
@@ -90,6 +104,7 @@ export const Login = () => {
               onChange={(e) => {
                 setUser({ ...user, password: e.target.value });
               }}
+              type="password"
               sx={{
                 width: "381px",
                 padding: "0",

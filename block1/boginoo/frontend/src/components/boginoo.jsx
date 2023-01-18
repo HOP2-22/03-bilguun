@@ -8,6 +8,7 @@ import { User } from "../context/Context";
 import Group from "../assets/Group.svg";
 import { OutlinedInput } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 export const Boginoo = () => {
   const [value, setValue] = useState("");
@@ -77,6 +78,9 @@ export const Boginoo = () => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
+          }}
+          onClick={() => {
+            navigate(`/`);
           }}
         >
           <img src={Group} alt="group" />
@@ -188,22 +192,38 @@ export const Boginoo = () => {
                 >
                   Богино холбоос:
                 </Typography>
-                <Typography>
-                  <a
-                    href={`${link[0]?.short}`}
-                    style={{
-                      color: "black",
-                      textDecoration: "none",
-                      fontFamily: "Ubuntu",
-                      fontStyle: "normal",
-                      fontWeight: "400",
-                      fontSize: "20px",
-                      lineHeight: "23px",
-                    }}
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <Typography>
+                    <a
+                      href={`${link[0]?.short}`}
+                      style={{
+                        color: "black",
+                        textDecoration: "none",
+                        fontFamily: "Ubuntu",
+                        fontStyle: "normal",
+                        fontWeight: "400",
+                        fontSize: "20px",
+                        lineHeight: "23px",
+                      }}
+                    >
+                      http://localhost:3000/{`${link[0]?.short}`}
+                    </a>
+                  </Typography>
+                  <CopyToClipboard
+                    text={`http://localhost:3000/${link[0]?.short}`}
                   >
-                    http://localhost:3000/{`${link[0]?.short}`}
-                  </a>
-                </Typography>
+                    <p style={{ textDecoration: "1px solid black" }}>
+                      Хуулж авах
+                    </p>
+                  </CopyToClipboard>
+                </Box>
               </Box>
             </div>
           </Box>

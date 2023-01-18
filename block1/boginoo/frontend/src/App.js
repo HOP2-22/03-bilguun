@@ -4,6 +4,7 @@ import { History } from "./components/History";
 import { Login } from "./components/login";
 import { SignUp } from "./components/signup";
 import { Box } from "@mui/system";
+import GuardedRoute from "./guard/authGuard";
 import Header from "./layout/header";
 import Footer from "./layout/footer";
 import { Url } from "./components/url";
@@ -17,7 +18,15 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Boginoo />} />
-            <Route path="/history" element={<History />} />
+
+            <Route
+              path="/history"
+              element={
+                <GuardedRoute>
+                  <History />
+                </GuardedRoute>
+              }
+            />
             <Route path="/:id" element={<Url />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />

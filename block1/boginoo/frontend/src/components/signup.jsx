@@ -44,127 +44,160 @@ export const SignUp = () => {
           gap: "50px",
         }}
       >
-        <Box
-          sx={{
-            width: "100%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
+        <form
+          onSubmit={() => {
+            console.log("test");
+            createUser();
+            navigate("/");
           }}
         >
-          <img src={Group} alt="group" />
-          <Typography
-            sx={{ fontFamily: "Lobster", fontSize: "56px", color: "#02B589" }}
-          >
-            Boginoo
-          </Typography>
           <Box
             sx={{
+              width: "100%",
               display: "flex",
-              justifyContent: "center",
               flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
-            <Typography
-              sx={{ fontSize: "40px", color: "#02B589", fontFamily: "Ubuntu" }}
-            >
-              Бүртгүүлэх
-            </Typography>
-            <Typography
-              sx={{
-                fontSize: "16px",
-                marginLeft: "20px",
-                fontFamily: "Ubuntu",
-              }}
-            >
-              Цахим хаяг
-            </Typography>
-            <OutlinedInput
-              placeholder="name@mail.domain"
-              variant="outlined"
-              value={userInfo.email}
-              onChange={(e) => {
-                setUserInfo({ ...userInfo, email: e.target.value });
-              }}
-              sx={{
-                width: "381px",
-                padding: "0",
-                height: "44px",
-                marginBottom: "20px",
-                borderRadius: "100px",
-                fontSize: "20px",
-              }}
-            />
-            <Typography
-              sx={{
-                fontSize: "16px",
-                marginLeft: "20px",
-                fontFamily: "Ubuntu",
-              }}
-            >
-              Нууц үг
-            </Typography>
-            <OutlinedInput
-              placeholder="••••••••••"
-              variant="outlined"
-              value={userInfo.password}
-              onChange={(e) => {
-                setUserInfo({ ...userInfo, password: e.target.value });
-              }}
-              sx={{
-                width: "381px",
-                padding: "0",
-                height: "44px",
-                marginBottom: "20px",
-                borderRadius: "100px",
-                fontSize: "20px",
-              }}
-            />
-            <Typography
-              sx={{
-                fontSize: "16px",
-                marginLeft: "20px",
-                fontFamily: "Ubuntu",
-              }}
-            >
-              Нууц үг давтах
-            </Typography>
-            <OutlinedInput
-              placeholder="••••••••••"
-              variant="outlined"
-              value={check}
-              onChange={(e) => {
-                setCheck(e.target.value);
-              }}
-              sx={{
-                width: "381px",
-                padding: "0",
-                height: "44px",
-                marginBottom: "20px",
-                borderRadius: "100px",
-                fontSize: "20px",
-              }}
-            />
-            <Button
+            <Box
               onClick={() => {
-                createUser();
+                navigate(`/`);
               }}
-              variant="outlined"
               sx={{
-                borderRadius: "100px",
-                backgroundColor: "#02B589",
-                height: "44px",
-                fontSize: "20px",
-                fontFamily: "Ubuntu",
-                color: "white",
-                marginBottom: "20px",
+                width: "100%",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
               }}
             >
-              Sign Up
-            </Button>
+              <img src={Group} alt="group" />
+              <Typography
+                sx={{
+                  fontFamily: "Lobster",
+                  fontSize: "56px",
+                  color: "#02B589",
+                }}
+              >
+                Boginoo
+              </Typography>
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                flexDirection: "column",
+              }}
+            >
+              <Typography
+                sx={{
+                  fontSize: "40px",
+                  color: "#02B589",
+                  fontFamily: "Ubuntu",
+                }}
+              >
+                Бүртгүүлэх
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: "16px",
+                  marginLeft: "20px",
+                  fontFamily: "Ubuntu",
+                }}
+              >
+                Цахим хаяг
+              </Typography>
+              <OutlinedInput
+                placeholder="name@mail.domain"
+                variant="outlined"
+                value={userInfo.email}
+                type="email"
+                required
+                onChange={(e) => {
+                  setUserInfo({ ...userInfo, email: e.target.value });
+                }}
+                sx={{
+                  width: "381px",
+                  padding: "0",
+                  height: "44px",
+                  marginBottom: "20px",
+                  borderRadius: "100px",
+                  fontSize: "20px",
+                }}
+              />
+              <Typography
+                sx={{
+                  fontSize: "16px",
+                  marginLeft: "20px",
+                  fontFamily: "Ubuntu",
+                }}
+              >
+                Нууц үг
+              </Typography>
+              <OutlinedInput
+                placeholder="••••••••••"
+                variant="outlined"
+                required
+                type="password"
+                value={userInfo.password}
+                onChange={(e) => {
+                  setUserInfo({ ...userInfo, password: e.target.value });
+                }}
+                sx={{
+                  width: "381px",
+                  padding: "0",
+                  height: "44px",
+                  marginBottom: "20px",
+                  borderRadius: "100px",
+                  fontSize: "20px",
+                }}
+              />
+              <Typography
+                sx={{
+                  fontSize: "16px",
+                  marginLeft: "20px",
+                  fontFamily: "Ubuntu",
+                }}
+              >
+                Нууц үг давтах
+              </Typography>
+              <OutlinedInput
+                placeholder="••••••••••"
+                required
+                variant="outlined"
+                type="password"
+                value={check}
+                onChange={(e) => {
+                  setCheck(e.target.value);
+                }}
+                sx={{
+                  width: "381px",
+                  padding: "0",
+                  height: "44px",
+                  marginBottom: "20px",
+                  borderRadius: "100px",
+                  fontSize: "20px",
+                }}
+              />
+              <Button
+                type="submit"
+                variant="outlined"
+                sx={{
+                  borderRadius: "100px",
+                  backgroundColor: "#02B589",
+                  height: "44px",
+                  fontSize: "20px",
+                  fontFamily: "Ubuntu",
+                  color: "white",
+                  marginBottom: "20px",
+                }}
+              >
+                Sign Up
+              </Button>
+            </Box>
           </Box>
-        </Box>
+        </form>
       </Box>
     </Container>
   );

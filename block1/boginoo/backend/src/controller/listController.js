@@ -19,7 +19,6 @@ exports.createList = async (req, res) => {
 exports.getLink = async (req, res) => {
   try {
     const id = req.params.id;
-    console.log(id);
     const listData = await Lists.find({ short: id });
     res.send(listData[0]);
   } catch (error) {

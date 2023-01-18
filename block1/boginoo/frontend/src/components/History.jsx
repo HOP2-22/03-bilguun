@@ -4,11 +4,14 @@ import { Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import Group from "../assets/Group.svg";
 import { User } from "../context/Context";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 export const History = () => {
   const { email } = useContext(User);
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -43,6 +46,9 @@ export const History = () => {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
+          }}
+          onClick={() => {
+            navigate(`/`);
           }}
         >
           <img src={Group} alt="group" />
@@ -111,22 +117,36 @@ export const History = () => {
                 >
                   Богино холбоос:
                 </Typography>
-                <Typography>
-                  <a
-                    href={`${e?.short}`}
-                    style={{
-                      color: "black",
-                      textDecoration: "none",
-                      fontFamily: "Ubuntu",
-                      fontStyle: "normal",
-                      fontWeight: "400",
-                      fontSize: "20px",
-                      lineHeight: "23px",
-                    }}
-                  >
-                    http://localhost:3000/{`${e?.short}`}
-                  </a>
-                </Typography>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <Typography>
+                    <a
+                      href={`${e?.short}`}
+                      style={{
+                        color: "black",
+                        textDecoration: "none",
+                        fontFamily: "Ubuntu",
+                        fontStyle: "normal",
+                        fontWeight: "400",
+                        fontSize: "20px",
+                        lineHeight: "23px",
+                      }}
+                    >
+                      http://localhost:3000/{`${e?.short}`}
+                    </a>
+                  </Typography>
+                  <CopyToClipboard text={`http://localhost:3000/${e?.short}`}>
+                    <p style={{ textDecoration: "1px solid black" }}>
+                      Хуулж авах
+                    </p>
+                  </CopyToClipboard>
+                </Box>
               </Box>
             </div>
           );
