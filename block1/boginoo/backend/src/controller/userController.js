@@ -36,7 +36,8 @@ exports.Login = async (req, res) => {
         {
           email: user.email,
         },
-        ACCESS_TOKEN_KEY
+        ACCESS_TOKEN_KEY,
+        { expiresIn: "1h" }
       );
       res.send({ email: user.email, match: match, token: token });
     } else {

@@ -1,6 +1,7 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export const User = createContext();
 
@@ -13,6 +14,17 @@ export function NameContext({ children }) {
     password: "",
   });
 
+  axios.interceptors.request.use(
+    (config) => {
+      const token = Cookies.get("token");
+      config.headers.set("token", token);
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
+    }
+  );
+
   const LoginFunc = async () => {
     try {
       const res = await axios.post("http://localhost:8029/user/login", {
@@ -20,6 +32,8 @@ export function NameContext({ children }) {
         password: user.password,
       });
       if (res.data.message !== false) {
+        Cookies.set("token", res.data.token);
+        Coolies.set("user", res.data.email);
         setDisable(true);
         setEmail(res.data.email);
         navigate(`/`);

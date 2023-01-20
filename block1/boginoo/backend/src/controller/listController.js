@@ -29,8 +29,8 @@ exports.getLink = async (req, res) => {
 
 exports.getUserLink = async (req, res) => {
   try {
-    const id = req.params.id;
-    const listData = await Lists.find({ user: id });
+    const email = req.params.email;
+    const listData = await Lists.find({ user: email });
     res.status(200).json({
       message: "success",
       data: listData,
