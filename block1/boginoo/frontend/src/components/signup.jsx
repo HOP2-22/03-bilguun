@@ -1,8 +1,7 @@
 import Button from "@mui/material/Button";
-import { useState, useEffect } from "react";
-import axios, { AxiosError } from "axios";
+import { useState } from "react";
+import axios from "axios";
 import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
 import { Typography } from "@mui/material";
 import { OutlinedInput } from "@mui/material";
 import { Container } from "@mui/system";
@@ -15,6 +14,7 @@ export const SignUp = () => {
     email: "",
     password: "",
   });
+  const [error, setError] = useState(false);
   const [check, setCheck] = useState("");
   const createUser = async () => {
     if (check === userInfo.password) {
@@ -29,6 +29,7 @@ export const SignUp = () => {
       }
     } else {
       console.log("error");
+      setError(true);
     }
   };
   return (
@@ -46,9 +47,7 @@ export const SignUp = () => {
       >
         <form
           onSubmit={() => {
-            console.log("test");
             createUser();
-            navigate("/");
           }}
         >
           <Box
@@ -61,15 +60,15 @@ export const SignUp = () => {
             }}
           >
             <Box
-              onClick={() => {
-                navigate(`/`);
-              }}
               sx={{
                 width: "100%",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
                 alignItems: "center",
+              }}
+              onClick={() => {
+                navigate(`/`);
               }}
             >
               <img src={Group} alt="group" />
@@ -195,6 +194,7 @@ export const SignUp = () => {
               >
                 Sign Up
               </Button>
+              {error ? <p>Нууц үг таарахгүй байна</p> : null}
             </Box>
           </Box>
         </form>

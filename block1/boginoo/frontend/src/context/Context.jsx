@@ -8,7 +8,6 @@ export const User = createContext();
 export function NameContext({ children }) {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
-  const [disable, setDisable] = useState(false);
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -24,6 +23,27 @@ export function NameContext({ children }) {
       return Promise.reject(error);
     }
   );
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const userEmail = await axios.get(
+          "http://localhost:8029/user/checkUser"
+        );
+        if (userEmail.data.exp * 1000 <= Date.now()) {
+          LogOut();
+          return;
+        } else setEmail(userEmail.data.email);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    getUser();
+  }, []);
+
+  const LogOut = () => {
+    setEmail(null);
+    Cookies.remove("token");
+  };
 
   const LoginFunc = async () => {
     try {
@@ -33,14 +53,13 @@ export function NameContext({ children }) {
       });
       if (res.data.message !== false) {
         Cookies.set("token", res.data.token);
-        Coolies.set("user", res.data.email);
-        setDisable(true);
         setEmail(res.data.email);
         navigate(`/`);
       }
       console.log(res);
     } catch (error) {
       console.log(error);
+      alert("Password or Email is invalid");
     }
   };
 
@@ -48,11 +67,11 @@ export function NameContext({ children }) {
     <User.Provider
       value={{
         email: email,
-        disable: disable,
         user: user,
         setEmail: setEmail,
         LoginFunc: LoginFunc,
         setUser: setUser,
+        LogOut: LogOut,
       }}
     >
       {children}

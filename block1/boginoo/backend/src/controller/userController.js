@@ -9,6 +9,15 @@ exports.getUsers = async (req, res) => {
   });
 };
 
+exports.checkUser = async (req, res) => {
+  const token = req?.headers?.token;
+  if (!token) {
+    return res.status(404);
+  }
+  const data = jwt.decode(token, ACCESS_TOKEN_KEY);
+  res.status(200).json(data);
+};
+
 exports.createUsers = async (req, res) => {
   const salt = await bcrypt.genSalt(10);
   console.log(req.body.password);
@@ -37,7 +46,7 @@ exports.Login = async (req, res) => {
           email: user.email,
         },
         ACCESS_TOKEN_KEY,
-        { expiresIn: "1h" }
+        { expiresIn: "15m" }
       );
       res.send({ email: user.email, match: match, token: token });
     } else {

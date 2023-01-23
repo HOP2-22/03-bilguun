@@ -17,6 +17,7 @@ export const Boginoo = () => {
   let link = data.slice(-1);
   const { email } = useContext(User);
   const navigate = useNavigate();
+  // window.location.reload();
   const createData = async () => {
     let random = (Math.random() + 1).toString(36).substring(7);
     console.log(random);

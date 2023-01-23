@@ -14,6 +14,7 @@ export const History = () => {
   const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
+      if (!email) return;
       try {
         const { data } = await axios.get(
           `http://localhost:8029/short/user/${email}`
@@ -25,7 +26,7 @@ export const History = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [email]);
   return (
     <Container>
       <Box

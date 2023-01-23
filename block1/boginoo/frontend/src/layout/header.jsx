@@ -17,7 +17,7 @@ export const Header = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const { email, setEmail } = useContext(User);
+  const { email, LogOut } = useContext(User);
   const navigate = useNavigate();
   const handleClick = () => {
     <></>;
@@ -75,7 +75,7 @@ export const Header = () => {
                 <MenuItem
                   onClick={() => {
                     handleClose();
-                    setEmail("");
+                    LogOut();
                   }}
                   sx={{ width: "150px" }}
                 >
