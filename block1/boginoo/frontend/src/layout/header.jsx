@@ -33,6 +33,7 @@ export const Header = () => {
           justifyContent: "flex-end",
           alignItems: "center",
           gap: "50px",
+          marginBottom: "50px",
         }}
       >
         <Typography
@@ -53,7 +54,12 @@ export const Header = () => {
                 aria-haspopup="true"
                 aria-expanded={open ? "true" : undefined}
                 onClick={handleClickPro}
-                sx={{ color: "black" }}
+                sx={{
+                  color: "black",
+                  fontWeight: "600",
+                  fontSize: "20px",
+                  fontFamily: "Ubuntu",
+                }}
               >
                 {email}
               </Button>

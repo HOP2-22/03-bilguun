@@ -12,15 +12,16 @@ exports.getUsers = async (req, res) => {
 exports.checkUser = async (req, res) => {
   const token = req?.headers?.token;
   if (!token) {
-    return res.status(404);
+    return res.status(404).json({
+      message: "Invalid token",
+    });
   }
-  const data = jwt.decode(token, ACCESS_TOKEN_KEY);
+  const data = await jwt.decode(token, process.env.ACCESS_TOKEN_KEY);
   res.status(200).json(data);
 };
 
 exports.createUsers = async (req, res) => {
   const salt = await bcrypt.genSalt(10);
-  console.log(req.body.password);
   const hashed = await bcrypt.hash(req.body.password, salt);
   try {
     const user = await Users.create({
@@ -29,11 +30,9 @@ exports.createUsers = async (req, res) => {
     });
     res.send({ message: "created successfully", user });
   } catch (error) {
-    res.status(400).send(error.message);
+    res.status(400).json(error.message);
   }
 };
-
-const ACCESS_TOKEN_KEY = "secret123";
 
 exports.Login = async (req, res) => {
   const { email, password } = req.body;
@@ -45,14 +44,14 @@ exports.Login = async (req, res) => {
         {
           email: user.email,
         },
-        ACCESS_TOKEN_KEY,
+        process.env.ACCESS_TOKEN_KEY,
         { expiresIn: "15m" }
       );
-      res.send({ email: user.email, match: match, token: token });
+      res.status(200).json({ email: user.email, match: match, token: token });
     } else {
-      res.send({ message: match });
+      res.status(300).json({ message: match });
     }
   } catch (error) {
-    res.status(400).send(error.message);
+    res.status(400).json(error.message);
   }
 };

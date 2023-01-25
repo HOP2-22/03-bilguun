@@ -17,7 +17,7 @@ export const History = () => {
       if (!email) return;
       try {
         const { data } = await axios.get(
-          `http://localhost:8029/short/user/${email}`
+          `https://bilguun-boginoo.onrender.com/short/user/${email}`
         );
         console.log(data);
         setData(data.data);
@@ -32,7 +32,6 @@ export const History = () => {
       <Box
         sx={{
           width: "100%",
-          height: "80vh",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -135,14 +134,16 @@ export const History = () => {
                         fontFamily: "Ubuntu",
                         fontStyle: "normal",
                         fontWeight: "400",
-                        fontSize: "20px",
+                        fontSize: "15px",
                         lineHeight: "23px",
                       }}
                     >
-                      http://localhost:3000/{`${e?.short}`}
+                      {`https://boginoo-eed24.web.app/${e?.short}`}
                     </a>
                   </Typography>
-                  <CopyToClipboard text={`http://localhost:3000/${e?.short}`}>
+                  <CopyToClipboard
+                    text={`https://boginoo-eed24.web.app/${e?.short}`}
+                  >
                     <p style={{ textDecoration: "1px solid black" }}>
                       Хуулж авах
                     </p>

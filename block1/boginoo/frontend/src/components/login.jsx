@@ -54,6 +54,7 @@ export const Login = () => {
           </Box>
           <form
             onSubmit={(e) => {
+              e.preventDefault();
               LoginFunc();
             }}
           >

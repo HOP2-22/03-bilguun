@@ -19,11 +19,14 @@ export const SignUp = () => {
   const createUser = async () => {
     if (check === userInfo.password) {
       try {
-        const res = await axios.post("http://localhost:8029/user/create", {
-          email: userInfo.email,
-          password: userInfo.password,
-        });
-        navigate(`/`);
+        const res = await axios.post(
+          "https://bilguun-boginoo.onrender.com/user/create",
+          {
+            email: userInfo.email,
+            password: userInfo.password,
+          }
+        );
+        navigate(`/login`);
       } catch (error) {
         console.log(error);
       }
@@ -46,8 +49,9 @@ export const SignUp = () => {
         }}
       >
         <form
-          onSubmit={() => {
+          onSubmit={(e) => {
             createUser();
+            e.preventDefault();
           }}
         >
           <Box

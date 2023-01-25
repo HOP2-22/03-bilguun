@@ -7,7 +7,9 @@ export const Url = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:8029/short/${id}`);
+        const { data } = await axios.get(`
+        https://bilguun-boginoo.onrender.com/short/${id}
+        `);
         if (data) window.location.replace(data.original);
       } catch (error) {}
     };

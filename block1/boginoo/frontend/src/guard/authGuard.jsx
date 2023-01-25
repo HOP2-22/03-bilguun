@@ -1,15 +1,25 @@
-import React from "react";
-import { Navigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const GuardedRoute = ({ children }) => {
-  const checkUser = async () => {
-    const userEmail = await axios.get("http://localhost:8029/user/checkUser");
-    console.log(userEmail.data);
-    if (userEmail.data.exp * 1000 <= Date.now()) {
-      return <Navigate to="/login" replace />;
-    }
-  };
+  const navigate = useNavigate();
+  useEffect(() => {
+    const checkUser = async () => {
+      try {
+        const userEmail = await axios.get(
+          `https://bilguun-boginoo.onrender.com/user/checkUser`
+        );
+        if (!userEmail.data.exp) {
+          navigate("/login");
+          return;
+        }
+      } catch (error) {
+        navigate("/login");
+      }
+    };
+    checkUser();
+  }, []);
   return children;
 };
 

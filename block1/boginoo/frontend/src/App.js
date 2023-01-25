@@ -9,7 +9,7 @@ import Header from "./layout/header";
 import Footer from "./layout/footer";
 import { Url } from "./components/url";
 import { NameContext } from "./context/Context";
-
+// require("dotenv").config();
 function App() {
   return (
     <BrowserRouter>

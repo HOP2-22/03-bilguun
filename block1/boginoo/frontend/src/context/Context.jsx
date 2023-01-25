@@ -16,6 +16,9 @@ export function NameContext({ children }) {
   axios.interceptors.request.use(
     (config) => {
       const token = Cookies.get("token");
+      if (!token) {
+        return config;
+      }
       config.headers.set("token", token);
       return config;
     },
@@ -27,7 +30,7 @@ export function NameContext({ children }) {
     const getUser = async () => {
       try {
         const userEmail = await axios.get(
-          "http://localhost:8029/user/checkUser"
+          `https://bilguun-boginoo.onrender.com/user/checkUser`
         );
         if (userEmail.data.exp * 1000 <= Date.now()) {
           LogOut();
@@ -40,23 +43,26 @@ export function NameContext({ children }) {
     getUser();
   }, []);
 
-  const LogOut = () => {
+  const LogOut = (config) => {
     setEmail(null);
     Cookies.remove("token");
+    config.headers.remove("token");
   };
 
   const LoginFunc = async () => {
     try {
-      const res = await axios.post("http://localhost:8029/user/login", {
-        email: user.email,
-        password: user.password,
-      });
+      const res = await axios.post(
+        `https://bilguun-boginoo.onrender.com/user/login`,
+        {
+          email: user.email,
+          password: user.password,
+        }
+      );
       if (res.data.message !== false) {
         Cookies.set("token", res.data.token);
         setEmail(res.data.email);
         navigate(`/`);
       }
-      console.log(res);
     } catch (error) {
       console.log(error);
       alert("Password or Email is invalid");

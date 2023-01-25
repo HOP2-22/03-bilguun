@@ -22,7 +22,6 @@ exports.getLink = async (req, res) => {
     const listData = await Lists.find({ short: id });
     res.send(listData[0]);
   } catch (error) {
-    console.log(error);
     res.status(400).send(error.message);
   }
 };

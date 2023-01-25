@@ -14,7 +14,20 @@ export const Boginoo = () => {
   const [value, setValue] = useState("");
   const [data, setData] = useState([]);
   const [short, setShort] = useState(false);
+  const [valid, setValid] = useState(false);
   let link = data.slice(-1);
+  const isValidUrl = (urlString) => {
+    var urlPattern = new RegExp(
+      "^(https?:\\/\\/)?" + // validate protocol
+        "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // validate domain name
+        "((\\d{1,3}\\.){3}\\d{1,3}))" + // validate OR ip (v4) address
+        "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // validate port and path
+        "(\\?[;&a-z\\d%_.~+=-]*)?" + // validate query string
+        "(\\#[-a-z\\d_]*)?$",
+      "i"
+    ); // validate fragment locator
+    return !!urlPattern.test(urlString);
+  };
   const { email } = useContext(User);
   const navigate = useNavigate();
   // window.location.reload();
@@ -23,10 +36,13 @@ export const Boginoo = () => {
     console.log(random);
     if (email === "") {
       try {
-        const res = await axios.post("http://localhost:8029/short/create", {
-          original: value,
-          short: random,
-        });
+        const res = await axios.post(
+          `https://bilguun-boginoo.onrender.com/short/create`,
+          {
+            original: value,
+            short: random,
+          }
+        );
         console.log(res);
         setValue("");
         setShort(true);
@@ -35,11 +51,14 @@ export const Boginoo = () => {
       }
     } else {
       try {
-        const res = await axios.post("http://localhost:8029/short/create", {
-          original: value,
-          short: random,
-          user: email,
-        });
+        const res = await axios.post(
+          `https://bilguun-boginoo.onrender.com/short/create`,
+          {
+            original: value,
+            short: random,
+            user: email,
+          }
+        );
         console.log(res);
         setValue("");
         setShort(true);
@@ -51,7 +70,9 @@ export const Boginoo = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get("http://localhost:8029/short");
+        const { data } = await axios.get(
+          `https://bilguun-boginoo.onrender.com/short`
+        );
         setData(data);
       } catch (error) {
         console.log(error);
@@ -64,7 +85,7 @@ export const Boginoo = () => {
       <Box
         sx={{
           width: "100%",
-          height: "80vh",
+          height: "75vh",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -121,18 +142,29 @@ export const Boginoo = () => {
             variant="outlined"
             height={44}
             onClick={() => {
-              createData();
+              let checkUrl = isValidUrl(value);
+              if (checkUrl) {
+                createData();
+              } else {
+                setValid(true);
+              }
             }}
             sx={{
               backgroundColor: "#02B589",
               color: "white",
               height: "55px",
               borderRadius: "100px",
+              fontFamily: "Ubuntu",
             }}
           >
             Богиносгох
           </Button>
         </Box>
+        {valid ? (
+          <div style={{ color: "red", fontSize: "15px", fontFamily: "Ubuntu" }}>
+            Url is not valid
+          </div>
+        ) : null}
         {short ? (
           <Box>
             <div
@@ -214,11 +246,11 @@ export const Boginoo = () => {
                         lineHeight: "23px",
                       }}
                     >
-                      http://localhost:3000/{`${link[0]?.short}`}
+                      https://boginoo-eed24.web.app/{`${link[0]?.short}`}
                     </a>
                   </Typography>
                   <CopyToClipboard
-                    text={`http://localhost:3000/${link[0]?.short}`}
+                    text={`https://boginoo-eed24.web.app/${link[0]?.short}`}
                   >
                     <p style={{ textDecoration: "1px solid black" }}>
                       Хуулж авах
