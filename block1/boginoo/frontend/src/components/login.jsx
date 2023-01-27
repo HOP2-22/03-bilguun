@@ -1,169 +1,123 @@
 import Button from "@mui/material/Button";
 import { useContext } from "react";
-import Box from "@mui/material/Box";
-import { OutlinedInput } from "@mui/material";
-import { Typography } from "@mui/material";
-import { Container } from "@mui/system";
 import Group from "../assets/Group.svg";
 import { useNavigate } from "react-router-dom";
 import { User } from "../context/Context";
+import "../css/login.css";
 
 export const Login = () => {
   const navigate = useNavigate();
   const { user, setUser, LoginFunc } = useContext(User);
   return (
-    <Container>
-      <Box
-        sx={{
-          width: "100%",
-          height: "80vh",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "50px",
+    <div className="container-login">
+      <div
+        className="logo-container"
+        onClick={() => {
+          navigate(`/`);
         }}
       >
-        <Box
-          sx={{
-            width: "100%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
+        <img src={Group} alt="group" />
+        <p
+          style={{
+            fontFamily: "Lobster",
+            fontSize: "56px",
+            color: "#02B589",
+            margin: "0",
           }}
         >
-          <Box
-            sx={{
-              width: "100%",
+          Boginoo
+        </p>
+      </div>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          LoginFunc();
+        }}
+      >
+        <div>
+          <p
+            style={{
+              fontSize: "38px",
+              color: "#02B589",
+              marginLeft: "10px",
+              fontFamily: "Ubuntu",
+            }}
+          >
+            Нэвтрэх
+          </p>
+          <p
+            style={{
+              fontSize: "16px",
+              marginLeft: "20px",
+              fontFamily: "Ubuntu",
+            }}
+          >
+            Цахим хаяг
+          </p>
+          <input
+            placeholder="name@mail.domain"
+            type="email"
+            required
+            value={user.email}
+            onChange={(e) => {
+              setUser({ ...user, email: e.target.value });
+            }}
+          />
+          <p
+            style={{
+              fontSize: "16px",
+              marginLeft: "20px",
+              fontFamily: "Ubuntu",
+            }}
+          >
+            Нууц үг
+          </p>
+
+          <input
+            placeholder="••••••••••"
+            required
+            type="password"
+            value={user.password}
+            onChange={(e) => {
+              setUser({ ...user, password: e.target.value });
+            }}
+          />
+          <div
+            style={{
               display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-            onClick={() => {
-              navigate(`/`);
+              flexDirection: "row",
+              width: "100%",
+              justifyContent: "space-between",
             }}
           >
-            <img src={Group} alt="group" />
-            <Typography
-              sx={{ fontFamily: "Lobster", fontSize: "56px", color: "#02B589" }}
-            >
-              Boginoo
-            </Typography>
-          </Box>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              LoginFunc();
-            }}
-          >
-            <Box
-              sx={{
+            <div
+              style={{
                 display: "flex",
-                justifyContent: "center",
-                flexDirection: "column",
+                flexDirection: "row",
+                width: "100%",
+                alignItems: "center",
               }}
             >
-              <Typography sx={{ fontSize: "40px", color: "#02B589" }}>
-                Нэвтрэх
-              </Typography>
-              <Typography
-                sx={{
-                  fontSize: "16px",
-                  marginLeft: "20px",
-                  fontFamily: "Ubuntu",
-                }}
-              >
-                Цахим хаяг
-              </Typography>
-              <OutlinedInput
-                placeholder="name@mail.domain"
-                variant="outlined"
-                type="email"
-                required
-                value={user.email}
-                onChange={(e) => {
-                  setUser({ ...user, email: e.target.value });
-                }}
-                sx={{
-                  width: "381px",
-                  padding: "0",
-                  height: "44px",
-                  marginBottom: "20px",
-                  borderRadius: "100px",
-                  fontSize: "20px",
-                }}
-              />
-              <Typography
-                sx={{
-                  fontSize: "16px",
-                  marginLeft: "20px",
-                  fontFamily: "Ubuntu",
-                }}
-              >
-                Нууц үг
-              </Typography>
-
-              <OutlinedInput
-                placeholder="••••••••••"
-                variant="outlined"
-                required
-                type="password"
-                value={user.password}
-                onChange={(e) => {
-                  setUser({ ...user, password: e.target.value });
-                }}
-                sx={{
-                  width: "381px",
-                  padding: "0",
-                  height: "44px",
-                  marginBottom: "20px",
-                  borderRadius: "100px",
-                  fontSize: "20px",
-                }}
-              />
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                }}
-              >
-                <Box sx={{ display: "flex", flexDirection: "row" }}>
-                  <input type="checkbox" name="" id="" />
-                  <Typography sx={{ color: "#02B589" }}>Намайг сана</Typography>
-                </Box>
-                <Typography>
-                  <a href="/">Нууц үг мартсан</a>
-                </Typography>
-              </Box>
-              <Button
-                variant="outlined"
-                // onClick={() => {
-                //   LoginFunc();
-                // }}
-                type="submit"
-                sx={{
-                  borderRadius: "100px",
-                  backgroundColor: "#02B589",
-                  height: "44px",
-                  fontSize: "20px",
-                  fontFamily: "Ubuntu",
-                  color: "white",
-                  marginBottom: "20px",
-                }}
-              >
-                Нэвтрэх
-              </Button>
-              <Typography>
-                <a href="/signup">Шинэ хэрэглэгч бол энд дарна уу</a>
-              </Typography>
-            </Box>
-          </form>
-        </Box>
-      </Box>
-    </Container>
+              <input type="checkbox" name="" id="" className="checkbox" />
+              <p style={{ color: "#02B589" }}>Намайг сана</p>
+            </div>
+            <p>
+              <a href="/" style={{ color: "black" }}>
+                Нууц үг мартсан
+              </a>
+            </p>
+          </div>
+          <button type="submit" className="button-login">
+            Нэвтрэх
+          </button>
+          <p>
+            <a href="/signup" style={{ color: "black" }}>
+              Шинэ хэрэглэгч бол энд дарна уу
+            </a>
+          </p>
+        </div>
+      </form>
+    </div>
   );
 };
 

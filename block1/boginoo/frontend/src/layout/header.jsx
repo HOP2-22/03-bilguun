@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { User } from "../context/Context";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import "../css/boginoo.css";
 
 export const Header = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -36,11 +37,7 @@ export const Header = () => {
           marginBottom: "50px",
         }}
       >
-        <Typography
-          sx={{ fontWeight: "700", color: "#02B589", fontSize: "20px" }}
-        >
-          Хэрхэн ажилладаг вэ?
-        </Typography>
+        <p className="word">Хэрхэн ажилладаг вэ?</p>
         {email ? (
           <div
             onClick={() => {
@@ -100,21 +97,14 @@ export const Header = () => {
             </div>
           </div>
         ) : (
-          <Button
-            variant="outlined"
-            sx={{
-              backgroundColor: "#02B589",
-              color: "white",
-              width: "183px",
-              height: "44px",
-              borderRadius: "100px",
-            }}
+          <button
+            className="button"
             onClick={() => {
               navigate(`login`);
             }}
           >
             Нэвтрэх
-          </Button>
+          </button>
         )}
       </Box>
     </Container>

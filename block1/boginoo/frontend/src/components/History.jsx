@@ -7,10 +7,14 @@ import { User } from "../context/Context";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import "../css/boginoo.css";
+import Lottie from "lottie-react";
+import Loading from "../assets/99274-loading.json";
 
 export const History = () => {
   const { email } = useContext(User);
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
@@ -21,6 +25,8 @@ export const History = () => {
         );
         console.log(data);
         setData(data.data);
+        setLoading(false);
+        console.log(loading);
       } catch (error) {
         console.error(error);
       }
@@ -58,98 +64,38 @@ export const History = () => {
             Boginoo
           </Typography>
         </Box>
+        {loading ? <Lottie animationData={Loading} loop={true} /> : null}
         {data?.map((e, index) => {
           return (
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-                width: "50vw",
-                height: "80px",
-              }}
-              key={index}
-            >
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  flexWrap: "wrap",
-                  width: "50vw",
-                }}
-              >
-                <Typography
-                  sx={{
-                    fontFamily: "Ubuntu",
-                    fontStyle: "normal",
-                    fontWeight: "400",
-                    fontSize: "16px",
-                    lineHeight: "18px",
-                    color: "grey",
-                  }}
-                >
-                  Өгөгдсөн холбоос:
-                </Typography>
-                <Typography
-                  sx={{
-                    color: "black",
-                    textDecoration: "none",
-                    fontFamily: "Ubuntu",
-                    fontStyle: "normal",
-                    fontWeight: "400",
-                    fontSize: "15px",
-                    lineHeight: "23px",
-                  }}
-                >
-                  {e?.original}
-                </Typography>
-              </Box>
-              <Box>
-                <Typography
-                  sx={{
-                    fontFamily: "Ubuntu",
-                    fontStyle: "normal",
-                    fontWeight: "400",
-                    fontSize: "16px",
-                    lineHeight: "18px",
-                    color: "grey",
-                  }}
-                >
-                  Богино холбоос:
-                </Typography>
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <Typography>
-                    <a
-                      href={`${e?.short}`}
-                      style={{
-                        color: "black",
-                        textDecoration: "none",
-                        fontFamily: "Ubuntu",
-                        fontStyle: "normal",
-                        fontWeight: "400",
-                        fontSize: "15px",
-                        lineHeight: "23px",
-                      }}
-                    >
-                      {`https://boginoo-eed24.web.app/${e?.short}`}
+            <div className="shortened-container" key={index}>
+              <div className="shortened-container">
+                <p className="word2">Өгөгдсөн холбоос:</p>
+                <p className="link">{e?.original}</p>
+              </div>
+              <div>
+                <p className="word2">Богино холбоос:</p>
+                <div className="link-short">
+                  <p>
+                    <a href={`${e?.short}`} className="link">
+                      https://boginoo-eed24.web.app/{`${e?.short}`}
                     </a>
-                  </Typography>
+                  </p>
                   <CopyToClipboard
                     text={`https://boginoo-eed24.web.app/${e?.short}`}
                   >
-                    <p style={{ textDecoration: "1px solid black" }}>
+                    <button
+                      style={{
+                        width: "100px",
+                        height: "30px",
+                        border: "none",
+                        borderRadius: "100px",
+                      }}
+                    >
                       Хуулж авах
-                    </p>
+                    </button>
                   </CopyToClipboard>
-                </Box>
-              </Box>
+                </div>
+              </div>
             </div>
           );
         })}

@@ -1,7 +1,6 @@
 import Button from "@mui/material/Button";
 import { useState } from "react";
 import axios from "axios";
-import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
 import { OutlinedInput } from "@mui/material";
 import { Container } from "@mui/system";
@@ -36,174 +35,126 @@ export const SignUp = () => {
     }
   };
   return (
-    <Container>
-      <Box
-        sx={{
-          width: "100%",
-          height: "80vh",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "50px",
+    <div className="container-login">
+      <div
+        className="logo-container"
+        onClick={() => {
+          navigate(`/`);
         }}
       >
-        <form
-          onSubmit={(e) => {
-            createUser();
-            e.preventDefault();
+        <img src={Group} alt="group" />
+        <p
+          style={{
+            fontFamily: "Lobster",
+            fontSize: "56px",
+            color: "#02B589",
           }}
         >
-          <Box
-            sx={{
-              width: "100%",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
+          Boginoo
+        </p>
+      </div>
+      <form
+        onSubmit={(e) => {
+          createUser();
+          e.preventDefault();
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            flexDirection: "column",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "38px",
+              color: "#02B589",
+              fontFamily: "Ubuntu",
+              marginLeft: "10px",
             }}
           >
-            <Box
-              sx={{
-                width: "100%",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-              onClick={() => {
-                navigate(`/`);
-              }}
-            >
-              <img src={Group} alt="group" />
-              <Typography
-                sx={{
-                  fontFamily: "Lobster",
-                  fontSize: "56px",
-                  color: "#02B589",
-                }}
-              >
-                Boginoo
-              </Typography>
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                flexDirection: "column",
-              }}
-            >
-              <Typography
-                sx={{
-                  fontSize: "40px",
-                  color: "#02B589",
-                  fontFamily: "Ubuntu",
-                }}
-              >
-                Бүртгүүлэх
-              </Typography>
-              <Typography
-                sx={{
-                  fontSize: "16px",
-                  marginLeft: "20px",
-                  fontFamily: "Ubuntu",
-                }}
-              >
-                Цахим хаяг
-              </Typography>
-              <OutlinedInput
-                placeholder="name@mail.domain"
-                variant="outlined"
-                value={userInfo.email}
-                type="email"
-                required
-                onChange={(e) => {
-                  setUserInfo({ ...userInfo, email: e.target.value });
-                }}
-                sx={{
-                  width: "381px",
-                  padding: "0",
-                  height: "44px",
-                  marginBottom: "20px",
-                  borderRadius: "100px",
-                  fontSize: "20px",
-                }}
-              />
-              <Typography
-                sx={{
-                  fontSize: "16px",
-                  marginLeft: "20px",
-                  fontFamily: "Ubuntu",
-                }}
-              >
-                Нууц үг
-              </Typography>
-              <OutlinedInput
-                placeholder="••••••••••"
-                variant="outlined"
-                required
-                type="password"
-                value={userInfo.password}
-                onChange={(e) => {
-                  setUserInfo({ ...userInfo, password: e.target.value });
-                }}
-                sx={{
-                  width: "381px",
-                  padding: "0",
-                  height: "44px",
-                  marginBottom: "20px",
-                  borderRadius: "100px",
-                  fontSize: "20px",
-                }}
-              />
-              <Typography
-                sx={{
-                  fontSize: "16px",
-                  marginLeft: "20px",
-                  fontFamily: "Ubuntu",
-                }}
-              >
-                Нууц үг давтах
-              </Typography>
-              <OutlinedInput
-                placeholder="••••••••••"
-                required
-                variant="outlined"
-                type="password"
-                value={check}
-                onChange={(e) => {
-                  setCheck(e.target.value);
-                }}
-                sx={{
-                  width: "381px",
-                  padding: "0",
-                  height: "44px",
-                  marginBottom: "20px",
-                  borderRadius: "100px",
-                  fontSize: "20px",
-                }}
-              />
-              <Button
-                type="submit"
-                variant="outlined"
-                sx={{
-                  borderRadius: "100px",
-                  backgroundColor: "#02B589",
-                  height: "44px",
-                  fontSize: "20px",
-                  fontFamily: "Ubuntu",
-                  color: "white",
-                  marginBottom: "20px",
-                }}
-              >
-                Sign Up
-              </Button>
-              {error ? <p>Нууц үг таарахгүй байна</p> : null}
-            </Box>
-          </Box>
-        </form>
-      </Box>
-    </Container>
+            Бүртгүүлэх
+          </p>
+          <p
+            style={{
+              fontSize: "16px",
+              marginLeft: "20px",
+              fontFamily: "Ubuntu",
+            }}
+          >
+            Цахим хаяг
+          </p>
+          <input
+            placeholder="name@mail.domain"
+            variant="outlined"
+            value={userInfo.email}
+            type="email"
+            required
+            className="input"
+            onChange={(e) => {
+              setUserInfo({ ...userInfo, email: e.target.value });
+            }}
+          />
+          <p
+            style={{
+              fontSize: "16px",
+              marginLeft: "20px",
+              fontFamily: "Ubuntu",
+            }}
+          >
+            Нууц үг
+          </p>
+          <input
+            placeholder="••••••••••"
+            variant="outlined"
+            required
+            type="password"
+            value={userInfo.password}
+            className="input"
+            onChange={(e) => {
+              setUserInfo({ ...userInfo, password: e.target.value });
+            }}
+          />
+          <p
+            style={{
+              fontSize: "16px",
+              marginLeft: "20px",
+              fontFamily: "Ubuntu",
+            }}
+          >
+            Нууц үг давтах
+          </p>
+          <input
+            placeholder="••••••••••"
+            required
+            variant="outlined"
+            type="password"
+            value={check}
+            className="input"
+            onChange={(e) => {
+              setCheck(e.target.value);
+            }}
+          />
+          <Button
+            type="submit"
+            variant="outlined"
+            style={{
+              borderRadius: "100px",
+              backgroundColor: "#02B589",
+              height: "44px",
+              fontSize: "20px",
+              fontFamily: "Ubuntu",
+              color: "white",
+              marginTop: "20px",
+            }}
+          >
+            Sign Up
+          </Button>
+          {error ? <p>Нууц үг таарахгүй байна</p> : null}
+        </div>
+      </form>
+    </div>
   );
 };
 

@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Lottie from "lottie-react";
+import Loading from "../assets/99274-loading.json";
 
 export const Url = () => {
   const { id } = useParams();
@@ -15,5 +17,9 @@ export const Url = () => {
     };
     fetchData();
   }, []);
-  return <div>hi</div>;
+  return (
+    <div>
+      <Lottie animationData={Loading} loop={true} />
+    </div>
+  );
 };
