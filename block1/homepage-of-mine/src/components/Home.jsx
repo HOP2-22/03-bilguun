@@ -1,6 +1,6 @@
-import React, { Suspense, useContext, useRef } from "react";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import React, { useContext, useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import { Typography } from "@mui/material";
 import Container from "@mui/material/Container";
 import Profile from "../Bilguun.jpeg";
@@ -9,8 +9,19 @@ import { Bio } from "./Bio";
 import { OnTheWeb } from "./OnTheWeb";
 import { Box } from "@mui/system";
 import { Bird } from "./Bird";
+import Aos from "aos";
+import "aos/dist/aos.css";
+
+const boxVariant = {
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
+  hidden: { opacity: 0, scale: 0 },
+};
+
 export const Home = () => {
   const { theme } = useContext(ColorModeContext);
+  useEffect(() => {
+    Aos.init({ duration: 2000 });
+  }, []);
   const styles = {
     firstRow: {
       width: "100%",
@@ -62,8 +73,9 @@ export const Home = () => {
     <Box sx={styles.body}>
       <Container maxWidth="sm">
         <Box>
-          <Bird />
+          <Bird data-aos="fade-up" />
           <Box
+            data-aos="fade-up"
             borderRadius="lg"
             mb={6}
             p={3}
@@ -72,12 +84,12 @@ export const Home = () => {
               backdropFilter: "blur(10px)",
               backgroundColor: "rgba(255, 255, 255, 0.25)",
               borderRadius: "100px",
-              marginTop: "-120px",
+              marginTop: "-80px",
             }}
           >
-            Hello, I&apos;m an indie app developer based in Japan!
+            Hello, I&apos;m an indie app developer based in Mongolia!
           </Box>
-          <Box sx={styles.firstRow}>
+          <Box sx={styles.firstRow} data-aos="fade-up">
             <Box>
               <Typography sx={styles.portfolio}>
                 Enkh-Amgalan Bilguun
@@ -88,7 +100,7 @@ export const Home = () => {
               <img src={Profile} alt="profile" width={70} height={70} />
             </Box>
           </Box>
-          <Box>
+          <Box data-aos="fade-up">
             <Bio />
             <Box sx={{ marginBottom: "40px" }}>
               <Typography sx={styles.infos} variant="h5">
