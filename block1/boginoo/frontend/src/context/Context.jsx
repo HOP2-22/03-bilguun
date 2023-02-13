@@ -32,6 +32,7 @@ export function NameContext({ children }) {
         const userEmail = await axios.get(
           `https://bilguun-boginoo.onrender.com/user/checkUser`
         );
+        console.log(user);
         if (userEmail.data.exp * 1000 <= Date.now()) {
           LogOut();
           return;

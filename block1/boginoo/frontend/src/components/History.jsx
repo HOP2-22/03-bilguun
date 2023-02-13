@@ -10,11 +10,18 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import "../css/boginoo.css";
 import Lottie from "lottie-react";
 import Loading from "../assets/99274-loading.json";
+import Pagination from "@mui/material/Pagination";
+import PaginationItem from "@mui/material/PaginationItem";
+import Stack from "@mui/material/Stack";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 export const History = () => {
   const { email } = useContext(User);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [number, setNumber] = useState(1);
+  const [files, setFiles] = useState(0);
   const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
@@ -23,16 +30,30 @@ export const History = () => {
         const { data } = await axios.get(
           `https://bilguun-boginoo.onrender.com/short/user/${email}`
         );
-        console.log(data);
-        setData(data.data);
+        setFiles(data.data.length);
         setLoading(false);
-        console.log(loading);
       } catch (error) {
         console.error(error);
       }
     };
     fetchData();
-  }, [email]);
+  }, [email, data]);
+
+  useEffect(() => {
+    const Page = async () => {
+      if (!email) return;
+      try {
+        const res = await axios.get(
+          `https://bilguun-boginoo.onrender.com/short/${email}/${number}/2`
+        );
+        console.log("test");
+        setData(res.data.posts);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    Page();
+  }, [number, email]);
   return (
     <Container>
       <Box
@@ -99,6 +120,25 @@ export const History = () => {
             </div>
           );
         })}
+        <Stack spacing={2}>
+          <Pagination
+            count={Math.ceil(files / 2)}
+            onChange={(e, value) => {
+              console.log(value);
+              setNumber(value);
+            }}
+            renderItem={(item) => (
+              <PaginationItem
+                slots={{
+                  previous: ArrowBackIcon,
+                  next: ArrowForwardIcon,
+                }}
+                {...item}
+              />
+            )}
+            color="primary"
+          />
+        </Stack>
       </Box>
     </Container>
   );
